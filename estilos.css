@@ -7,7 +7,7 @@ body {
 
 header {
     text-align: center;
-    padding: 100px;
+    padding: 40px 20px;
 }
 
 h1 {
@@ -207,33 +207,35 @@ nav a:hover {
 @media (max-width: 768px) {
 
     header {
-        padding: 20px;
+        padding: 20px 10px;
     }
 
     h1 {
-        font-size: 32px;
-        letter-spacing: 2px;
-    }
-
-    h2 {
-        font-size: 28px;
-        margin-top: 20px;
+        font-size: 36px;
+        letter-spacing: 1px;
+        text-align: center;
     }
 
     .subtitulo {
         font-size: 16px;
+        text-align: center;
+        line-height: 1.4;
+        max-width: 90%;
+        margin: 0 auto 20px auto;
     }
 
     nav {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 10px;
+        text-align: center;
     }
 
     nav a {
-        font-size: 18px;
-        margin: 5px;
+        display: inline-block;
+        font-size: 16px;
+        margin: 5px 8px;
+    }
+
+    h2 {
+        font-size: 30px;
     }
 
     .categoria {
@@ -241,7 +243,7 @@ nav a:hover {
     }
 
     .titulo-categoria {
-        font-size: 22px;
+        font-size: 24px;
     }
 
     .galeria {
@@ -251,21 +253,9 @@ nav a:hover {
 
     .foto-completa img {
         max-width: 95%;
-        max-height: 60vh;
-    }
-
-    .imagen-lightbox {
-        max-width: 95%;
-        max-height: 70vh;
     }
 
     .texto-lightbox {
         font-size: 16px;
-        padding: 10px;
-    }
-
-    .cerrar {
-        font-size: 40px;
-        right: 20px;
     }
 }
