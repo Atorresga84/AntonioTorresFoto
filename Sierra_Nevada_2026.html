@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sierra Nevada 2026 - AntonioTorresFoto</title>
+
+    <link rel="stylesheet" href="estilos.css">
+
+</head>
+
+<div id="lightbox" class="lightbox">
+
+    <span class="cerrar" onclick="cerrarLightbox()">&times;</span>
+
+    <img id="imagenLightbox" class="imagen-lightbox">
+
+    <p id="textoLightbox" class="texto-lightbox"></p>
+
+</div>
+
+<script>
+
+function abrirLightbox(imagen, texto) {
+
+    document.getElementById("lightbox").style.display = "flex";
+
+    document.getElementById("imagenLightbox").src = imagen;
+
+    document.getElementById("textoLightbox").innerText = texto;
+}
+
+function cerrarLightbox() {
+
+    document.getElementById("lightbox").style.display = "none";
+}
+
+</script>
+
+<body>
+
+    <header>
+
+        <h1>AntonioTorresFoto</h1>
+
+        <nav>
+
+            <a href="index.html">Inicio</a>
+
+            <a href="naturaleza.html">Naturaleza</a>
+
+            <a href="religiosidad_popular.html">Religiosidad Popular</a>
+
+            <a href="fauna.html">Fauna</a>
+
+            <a href="viajes.html">Viajes</a>
+
+            <a href="sobremi.html">Sobre mí</a>
+
+            <a href="contacto.html">Contacto</a>
+
+        </nav>
+
+    </header>
+
+    <h2>Sierra Nevada 2026</h2>
+
+   <div class="galeria">
+
+    <img
+        src="Fotos/Viajes/Sierra_Nevada_2026/galeria/Sierra Nevada 1.jpg"
+        alt="Sierra Nevada 1"
+        onclick="abrirLightbox(
+            'Fotos/Viajes/Sierra_Nevada_2026/lightbox/Sierra Nevada 1.jpg',
+            'Corral del Veleta desde las posiciones del Veleta\nCanon Rf 24-105 mm. Longitud focal 24 mm. f/8 a 1/125 s. ISO 100\n22/08/2026'
+        )">
+
+    <img
+        src="Fotos/Viajes/Sierra_Nevada_2026/galeria/Sierra Nevada 2.jpg"
+        alt="Sierra Nevada 2"
+        onclick="abrirLightbox(
+            'Fotos/Viajes/Sierra_Nevada_2026/lightbox/Sierra Nevada 2.jpg',
+            'Tajos de la Virgen\nCanon Rf 24-105 mm. Longitud focal 24 mm. f/8 a 1/200 s. ISO 100\n22/08/2026'
+        )">
+<img
+        src="Fotos/Viajes/Sierra_Nevada_2026/galeria/Sierra Nevada 3.jpg"
+        alt="Sierra Nevada 3"
+        onclick="abrirLightbox(
+            'Fotos/Viajes/Sierra_Nevada_2026/lightbox/Sierra Nevada 3.jpg',
+            'Mulhacen y Alcazaba desde el Veleta\nCanon Rf 24-105 mm. Longitud focal 24 mm. f/8 a 1/200 s. ISO 100\n22/08/2026'
+        )">
+<img
+        src="Fotos/Viajes/Sierra_Nevada_2026/galeria/Sierra Nevada 4.jpg"
+        alt="Sierra Nevada 4"
+        onclick="abrirLightbox(
+            'Fotos/Viajes/Sierra_Nevada_2026/lightbox/Sierra Nevada 4.jpg',
+            'Formación rocosa junto a la carretera del Veleta\nCanon Rf 100-400 mm. Longitud focal 214 mm. f/8 a 1/250 s. ISO 250\n22/08/2026'
+        )">
+</div>
+
+</body>
+
+</html>
