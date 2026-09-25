@@ -64,28 +64,28 @@ function fotoAnterior() {
 
     let nuevoIndice = indiceActual - 1;
 
-    const elemento = document.querySelector(
-        '[data-indice="' + nuevoIndice + '"]'
-    );
-
-    if (elemento) {
-        elemento.click();
+    if (nuevoIndice < 0) {
+        nuevoIndice = document.querySelectorAll('[data-indice]').length - 1;
     }
 
+    document.querySelector(
+        '[data-indice="' + nuevoIndice + '"]'
+    ).click();
 }
 
 function fotoSiguiente() {
 
     let nuevoIndice = indiceActual + 1;
 
-    const elemento = document.querySelector(
-        '[data-indice="' + nuevoIndice + '"]'
-    );
+    const totalFotos = document.querySelectorAll('[data-indice]').length;
 
-    if (elemento) {
-        elemento.click();
+    if (nuevoIndice >= totalFotos) {
+        nuevoIndice = 0;
     }
 
+    document.querySelector(
+        '[data-indice="' + nuevoIndice + '"]'
+    ).click();
 }
 
 function cerrarLightbox() {
