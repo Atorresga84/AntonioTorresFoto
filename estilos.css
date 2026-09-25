@@ -294,3 +294,31 @@ nav a:hover {
 .contacto a:hover {
     color: #cccccc;
 }
+
+.anterior,
+.siguiente {
+
+    position: absolute;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    color: white;
+
+    font-size: 60px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    user-select: none;
+}
+
+.anterior {
+    left: 30px;
+}
+
+.siguiente {
+    right: 30px;
+}
