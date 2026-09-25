@@ -4,7 +4,7 @@
 
 <head>
 
-<!-- Google tag (gtag.js) -->
+ <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-MT3DKL07EW"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -12,6 +12,31 @@
   gtag('js', new Date());
 
   gtag('config', 'G-MT3DKL07EW');
+</script>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Tarifa 2026 - AntonioTorresFoto</title>
+
+    <link rel="stylesheet" href="estilos.css">
+
+</head>
+
+<div id="lightbox" class="lightbox">
+
+    <span class="cerrar" onclick="cerrarLightbox()">&times;</span>
+
+    <span class="anterior" onclick="fotoAnterior()">&#10094;</span>
+
+    <img id="imagenLightbox" class="imagen-lightbox">
+
+    <span class="siguiente" onclick="fotoSiguiente()">&#10095;</span>
+
+    <p id="textoLightbox" class="texto-lightbox"></p>
+
+</div>
 
 <script>
 
@@ -71,22 +96,6 @@ function cerrarLightbox() {
 
 </script>
 
-function abrirLightbox(imagen, texto) {
-
-    document.getElementById("lightbox").style.display = "flex";
-
-    document.getElementById("imagenLightbox").src = imagen;
-
-    document.getElementById("textoLightbox").innerText = texto;
-}
-
-function cerrarLightbox() {
-
-    document.getElementById("lightbox").style.display = "none";
-}
-
-</script>
-
 <body>
 
     <header>
@@ -122,6 +131,7 @@ function cerrarLightbox() {
         src="Fotos/Viajes/Tarifa_2026/galeria/Tarifa 1.jpg"
         alt="Tarifa 1"
         onclick="abrirLightbox(
+            0,
             'Fotos/Viajes/Tarifa_2026/lightbox/Tarifa 1.jpg',
             'Puerto de Tarifa. Al fondo la Isla de las Palomas\nCanon Rf 24-105 mm. Longitud focal 54 mm. f/11 a 1/250 s. ISO 200. ISO 100\n16/09/2026'
         )">
@@ -131,6 +141,7 @@ function cerrarLightbox() {
         src="Fotos/Viajes/Tarifa_2026/galeria/Tarifa 2.jpg"
         alt="Tarifa 2"
         onclick="abrirLightbox(
+            1,
             'Fotos/Viajes/Tarifa_2026/lightbox/Tarifa 2.jpg',
             'Playa de los Lances desde la Isla de las Palomas.\nCanon Rf 24-105 mm. Longitud focal 24 mm. f/10 a 1/800 s. ISO 400.\n16/09/2026'
         )">
@@ -139,6 +150,7 @@ function cerrarLightbox() {
         src="Fotos/Viajes/Tarifa_2026/galeria/Tarifa 3.jpg"
         alt="Tarifa 3"
         onclick="abrirLightbox(
+            2,
             'Fotos/Viajes/Tarifa_2026/lightbox/Tarifa 3.jpg',
             'Frontera entre el Mediterráneo y el Océano Atlántico.\nCanon Rf 24-105 mm. Longitud focal 44 mm. f/10 a 1/320 s. ISO 400.\n16/09/2026'
         )">
@@ -147,6 +159,7 @@ function cerrarLightbox() {
         src="Fotos/Viajes/Tarifa_2026/galeria/Tarifa 4.jpg"
         alt="Tarifa 4"
         onclick="abrirLightbox(
+            3,
             'Fotos/Viajes/Tarifa_2026/lightbox/Tarifa 4.jpg',
             'Restos del puerto viejo de Tarifa en la Isla de las Palomas.\nCanon Rf 24-105 mm. Longitud focal 24 mm. f/10 a 1/250 s. ISO 400.\n16/09/2026'
         )">
@@ -155,6 +168,7 @@ function cerrarLightbox() {
         src="Fotos/Viajes/Tarifa_2026/galeria/Tarifa 5.jpg"
         alt="Tarifa 5"
         onclick="abrirLightbox(
+            4,
             'Fotos/Viajes/Tarifa_2026/lightbox/Tarifa 5.jpg',
             'Mural.\nCanon Rf 24-105 mm. Longitud focal 100 mm. f/8 a 1/1250 s.\n16/09/2026'
         )"> 
@@ -163,6 +177,7 @@ function cerrarLightbox() {
         src="Fotos/Viajes/Tarifa_2026/galeria/Tarifa 6.jpg"
         alt="Tarifa 6"
         onclick="abrirLightbox(
+            5,
             'Fotos/Viajes/Tarifa_2026/lightbox/Tarifa 6.jpg',
             'Playa de los Lances.\nCanon Rf 24-105 mm. Longitud focal 75 mm. f/8 a 1/4000 s. ISO 400.\n16/09/2026'
         )">  
@@ -171,6 +186,7 @@ function cerrarLightbox() {
         src="Fotos/Viajes/Tarifa_2026/galeria/Tarifa 7.jpg"
         alt="Tarifa 7"
         onclick="abrirLightbox(
+            6,
             'Fotos/Viajes/Tarifa_2026/lightbox/Tarifa 7.jpg',
             'Playa de los Lances.\nCanon Rf 24-105 mm. Longitud focal 24 mm. f/6,3 a 1/1000 s. ISO 400.\n16/09/2026'
         )">
@@ -179,6 +195,7 @@ function cerrarLightbox() {
         src="Fotos/Viajes/Tarifa_2026/galeria/Tarifa 8.jpg"
         alt="Tarifa 8"
         onclick="abrirLightbox(
+            7,
             'Fotos/Viajes/Tarifa_2026/lightbox/Tarifa 8.jpg',
             'Sendero de acceso al Observatorio de Aves Planeadoras Punta Camorro.\nCanon Rf 100-400 mm. Longitud focal 100 mm. f/6,3 a 1/1250 s. ISO 400.\n16/09/2026'
         )">  
@@ -187,6 +204,7 @@ function cerrarLightbox() {
         src="Fotos/Viajes/Tarifa_2026/galeria/Tarifa 9.jpg"
         alt="Tarifa 9"
         onclick="abrirLightbox(
+            8,
             'Fotos/Viajes/Tarifa_2026/lightbox/Tarifa 9.jpg',
             'Restos de una embarcación en la Playa de Bolonia.\nCanon Rf 24-105 mm. Longitud focal 24 mm. f/16 a 1/80 s. ISO 200.\n17/09/2026'
         )">
@@ -195,6 +213,7 @@ function cerrarLightbox() {
         src="Fotos/Viajes/Tarifa_2026/galeria/Tarifa 10.jpg"
         alt="Tarifa 10"
         onclick="abrirLightbox(
+            9,
             'Fotos/Viajes/Tarifa_2026/lightbox/Tarifa 10.jpg',
             'Duna de Bolonia.\nCanon Rf 24-105 mm. Longitud focal 105 mm. f/9 a 1/250 s. ISO 100.\n17/09/2026'
         )">
@@ -203,6 +222,7 @@ function cerrarLightbox() {
         src="Fotos/Viajes/Tarifa_2026/galeria/Tarifa 11.jpg"
         alt="Tarifa 11"
         onclick="abrirLightbox(
+            10,
             'Fotos/Viajes/Tarifa_2026/lightbox/Tarifa 11.jpg',
             'Duna de Bolonia.\nCanon Rf 24-105 mm. Longitud focal 24 mm. f/20 a 1/80 s. ISO 320.\n17/09/2026'
         )">
@@ -211,6 +231,7 @@ function cerrarLightbox() {
         src="Fotos/Viajes/Tarifa_2026/galeria/Tarifa 12.jpg"
         alt="Tarifa 12"
         onclick="abrirLightbox(
+            11,
             'Fotos/Viajes/Tarifa_2026/lightbox/Tarifa 12.jpg',
             'Playa de Bolonia. Al fondo el sol a punto de esconderse tras la duna.\nCanon Rf 24-105 mm. Longitud focal 80 mm. f/7,1 a 1/3200 s. ISO 100.\n17/09/2026'
         )">                                            
