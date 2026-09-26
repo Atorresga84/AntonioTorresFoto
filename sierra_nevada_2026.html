@@ -4,7 +4,7 @@
 
 <head>
 
-<!-- Google tag (gtag.js) -->
+ <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-MT3DKL07EW"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -28,7 +28,11 @@
 
     <span class="cerrar" onclick="cerrarLightbox()">&times;</span>
 
+    <span class="anterior" onclick="fotoAnterior()">&#10094;</span>
+
     <img id="imagenLightbox" class="imagen-lightbox">
+
+    <span class="siguiente" onclick="fotoSiguiente()">&#10095;</span>
 
     <p id="textoLightbox" class="texto-lightbox"></p>
 
@@ -36,7 +40,18 @@
 
 <script>
 
-function abrirLightbox(imagen, texto) {
+let indiceActual = 0;
+
+const fotos = [];
+
+function abrirLightbox(indice, imagen, texto) {
+
+    indiceActual = indice;
+
+    fotos[indice] = {
+        imagen: imagen,
+        texto: texto
+    };
 
     document.getElementById("lightbox").style.display = "flex";
 
@@ -45,9 +60,38 @@ function abrirLightbox(imagen, texto) {
     document.getElementById("textoLightbox").innerText = texto;
 }
 
+function fotoAnterior() {
+
+    let nuevoIndice = indiceActual - 1;
+
+    if (nuevoIndice < 0) {
+        nuevoIndice = document.querySelectorAll('[data-indice]').length - 1;
+    }
+
+    document.querySelector(
+        '[data-indice="' + nuevoIndice + '"]'
+    ).click();
+}
+
+function fotoSiguiente() {
+
+    let nuevoIndice = indiceActual + 1;
+
+    const totalFotos = document.querySelectorAll('[data-indice]').length;
+
+    if (nuevoIndice >= totalFotos) {
+        nuevoIndice = 0;
+    }
+
+    document.querySelector(
+        '[data-indice="' + nuevoIndice + '"]'
+    ).click();
+}
+
 function cerrarLightbox() {
 
     document.getElementById("lightbox").style.display = "none";
+
 }
 
 </script>
@@ -83,34 +127,78 @@ function cerrarLightbox() {
    <div class="galeria">
 
     <img
+        data-indice="0"
         src="Fotos/Viajes/Sierra_Nevada_2026/galeria/Sierra Nevada 1.jpg"
         alt="Sierra Nevada 1"
         onclick="abrirLightbox(
+            0,
             'Fotos/Viajes/Sierra_Nevada_2026/lightbox/Sierra Nevada 1.jpg',
-            'Corral del Veleta desde las posiciones del Veleta\nCanon Rf 24-105 mm. Longitud focal 24 mm. f/8 a 1/125 s. ISO 100\n22/08/2026'
+            'Corral del Veleta\nCanon Rf 24-105 mm. Longitud focal 24 mm. f/8 a 1/125 s. ISO 100. ISO 100\n22/08/2026'
         )">
 
     <img
+        data-indice="1"
         src="Fotos/Viajes/Sierra_Nevada_2026/galeria/Sierra Nevada 2.jpg"
         alt="Sierra Nevada 2"
         onclick="abrirLightbox(
+            1,
             'Fotos/Viajes/Sierra_Nevada_2026/lightbox/Sierra Nevada 2.jpg',
             'Tajos de la Virgen\nCanon Rf 24-105 mm. Longitud focal 24 mm. f/8 a 1/200 s. ISO 100\n22/08/2026'
         )">
-<img
+    <img
+        data-indice="2"
         src="Fotos/Viajes/Sierra_Nevada_2026/galeria/Sierra Nevada 3.jpg"
         alt="Sierra Nevada 3"
         onclick="abrirLightbox(
+            2,
             'Fotos/Viajes/Sierra_Nevada_2026/lightbox/Sierra Nevada 3.jpg',
-            'Mulhacen y Alcazaba desde el Veleta\nCanon Rf 24-105 mm. Longitud focal 24 mm. f/8 a 1/200 s. ISO 100\n22/08/2026'
+            'Mulhacén y Alcazaba desde el Veleta\nCanon Rf 24-105 mm. Longitud focal 24 mm. f/8 a 1/200 s. ISO 100\n22/08/2026'
         )">
-<img
+    <img
+        data-indice="3"
         src="Fotos/Viajes/Sierra_Nevada_2026/galeria/Sierra Nevada 4.jpg"
         alt="Sierra Nevada 4"
         onclick="abrirLightbox(
+            3,
             'Fotos/Viajes/Sierra_Nevada_2026/lightbox/Sierra Nevada 4.jpg',
-            'Formación rocosa junto a la carretera del Veleta\nCanon Rf 100-400 mm. Longitud focal 214 mm. f/8 a 1/250 s. ISO 250\n22/08/2026'
+            'Formación rocosa junto a la carretera de ascenso al Veleta\nCanon Rf 100-400 mm. Longitud focal 214 mm. f/8 a 1/250 s. ISO 250\n22/08/2026'
         )">
+    <img
+        data-indice="4"
+        src="Fotos/Viajes/Sierra_Nevada_2026/galeria/Sierra Nevada 5.jpg"
+        alt="Sierra Nevada 5"
+        onclick="abrirLightbox(
+            4,
+            'Fotos/Viajes/Sierra_Nevada_2026/lightbox/Sierra Nevada 5.jpg',
+            'Radiotelescopio\nCanon Rf 100-400 mm. Longitud focal 214 mm. f/8 a 1/320 s. ISO 100\n22/08/2026'
+        )"> 
+    <img
+        data-indice="5"
+        src="Fotos/Viajes/Sierra_Nevada_2026/galeria/Sierra Nevada 6.jpg"
+        alt="Sierra Nevada 6"
+        onclick="abrirLightbox(
+            5,
+            'Fotos/Viajes/Sierra_Nevada_2026/lightbox/Sierra Nevada 6.jpg',
+            'Carretera de acceso a las posiciones del Veleta\nCanon Rf 24-105 mm. Longitud focal 50 mm. f/8 a 1/250 s. ISO 100\n22/08/2026'
+        )">  
+    <img
+        data-indice="6"
+        src="Fotos/Viajes/Sierra_Nevada_2026/galeria/Sierra Nevada 7.jpg"
+        alt="Sierra Nevada 7"
+        onclick="abrirLightbox(
+            6,
+            'Fotos/Viajes/Sierra_Nevada_2026/lightbox/Sierra Nevada 7.jpg',
+            'Antiguo observatorio del Mojón del Trigo\nCanon Rf 100-400 mm. Longitud focal 100 mm. f/8 a 1/250 s. ISO 100\n22/08/2026'
+        )">
+    <img
+        data-indice="7"
+        src="Fotos/Viajes/Sierra_Nevada_2026/galeria/Sierra Nevada 8.jpg"
+        alt="Sierra Nevada 8"
+        onclick="abrirLightbox(
+            7,
+            'Fotos/Viajes/Sierra_Nevada_2026/lightbox/Sierra Nevada 8.jpg',
+            'Virgen de las Nieves y Veleta\nCanon Rf 100-400 mm. Longitud focal 200 mm. f/8 a 1/320 s. ISO 100\n22/08/2026'
+        )">                                       
 </div>
 
 </body>
