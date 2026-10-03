@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+
+ <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MT3DKL07EW"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-MT3DKL07EW');
+</script>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Virgen de las Angustias 2026 - AntonioTorresFoto</title>
+
+    <link rel="stylesheet" href="estilos.css">
+
+</head>
+
+<div id="lightbox" class="lightbox">
+
+    <span class="cerrar" onclick="cerrarLightbox()">&times;</span>
+
+    <span class="anterior" onclick="fotoAnterior()">&#10094;</span>
+
+    <img id="imagenLightbox" class="imagen-lightbox">
+
+    <span class="siguiente" onclick="fotoSiguiente()">&#10095;</span>
+
+    <p id="textoLightbox" class="texto-lightbox"></p>
+
+</div>
+
+<script>
+
+let indiceActual = 0;
+
+const fotos = [];
+
+function abrirLightbox(indice, imagen, texto) {
+
+    indiceActual = indice;
+
+    fotos[indice] = {
+        imagen: imagen,
+        texto: texto
+    };
+
+    document.getElementById("lightbox").style.display = "flex";
+
+    document.getElementById("imagenLightbox").src = imagen;
+
+    document.getElementById("textoLightbox").innerText = texto;
+}
+
+function fotoAnterior() {
+
+    let nuevoIndice = indiceActual - 1;
+
+    if (nuevoIndice < 0) {
+        nuevoIndice = document.querySelectorAll('[data-indice]').length - 1;
+    }
+
+    document.querySelector(
+        '[data-indice="' + nuevoIndice + '"]'
+    ).click();
+}
+
+function fotoSiguiente() {
+
+    let nuevoIndice = indiceActual + 1;
+
+    const totalFotos = document.querySelectorAll('[data-indice]').length;
+
+    if (nuevoIndice >= totalFotos) {
+        nuevoIndice = 0;
+    }
+
+    document.querySelector(
+        '[data-indice="' + nuevoIndice + '"]'
+    ).click();
+}
+
+function cerrarLightbox() {
+
+    document.getElementById("lightbox").style.display = "none";
+
+}
+
+</script>
+
+<body>
+
+    <header>
+
+        <h1>AntonioTorresFoto</h1>
+
+        <nav>
+
+            <a href="index.html">Inicio</a>
+
+            <a href="naturaleza.html">Naturaleza</a>
+
+            <a href="religiosidad_popular.html">Religiosidad Popular</a>
+
+            <a href="fauna.html">Fauna</a>
+
+            <a href="viajes.html">Viajes</a>
+
+            <a href="sobremi.html">Sobre mí</a>
+
+            <a href="contacto.html">Contacto</a>
+
+        </nav>
+
+    </header>
+
+    <h2>Virgen de las Angustias 2026</h2>
+
+   <div class="galeria">
+
+    <img
+        data-indice="0"
+        src="Fotos/religiosidad popular/virgen_angustias_2026/galeria/virgen_angustias 1.jpg"
+        alt="Virgen Angustias 1"
+        onclick="abrirLightbox(
+            0,
+            'Fotos/religiosidad popular/virgen_angustias_2026/lightbox/virgen_angustias 1.jpg',
+            'La imagen de la Virgen de las Angustias avanza por la calle Marqués de Gerona\nCanon Rf 50 mm. Longitud focal 50 mm. f/5,6 a 1/500 s. ISO 800\n27/09/2026'
+        )">
+
+    <img
+        data-indice="1"
+        src="Fotos/religiosidad popular/virgen_angustias_2026/galeria/virgen_angustias 2.jpg"
+        alt="Virgen Angustias 2"
+        onclick="abrirLightbox(
+            1,
+            'Fotos/religiosidad popular/virgen_angustias_2026/lightbox/virgen_angustias 2.jpg',
+            'La imagen de la Virgen de las Angustias avanza por la calle Marqués de Gerona\nCanon Rf 50 mm. Longitud focal 50 mm. f/5,6 a 1/400 s. ISO 800\n27/09/2026'
+        )">
+    <img
+        data-indice="2"
+        src="Fotos/religiosidad popular/virgen_angustias_2026/galeria/virgen_angustias 3.jpg"
+        alt="Virgen Angustias 3"
+        onclick="abrirLightbox(
+            2,
+            'Fotos/religiosidad popular/virgen_angustias_2026/lightbox/virgen_angustias 3.jpg',
+            'La imagen de la Virgen de las Angustias frente a la entrada de su basílica\nCanon Rf 85 mm. Longitud focal 85 mm. f/2,8 a 1/200 s. ISO 6400\n27/08/2026'
+        )">
+    <img
+        data-indice="3"
+        src="Fotos/religiosidad popular/virgen_angustias_2026/galeria/virgen_angustias 4.jpg"
+        alt="Virgen Angustias 4"
+        onclick="abrirLightbox(
+            3,
+            'Fotos/religiosidad popular/virgen_angustias_2026/lightbox/virgen_angustias 4.jpg',
+            'La imagen de la Virgen de las Angustias en la Carrera de la Virgen\nCanon Rf 85 mm. Longitud focal 85 mm. f/2,8 a 1/500 s. ISO 6400\n27/08/2026'
+        )">
+    <img
+        data-indice="4"
+        src="Fotos/religiosidad popular/virgen_angustias_2026/galeria/virgen_angustias 5.jpg"
+        alt="Virgen Angustias 5"
+        onclick="abrirLightbox(
+            4,
+            'Fotos/religiosidad popular/virgen_angustias_2026/lightbox/virgen_angustias 5.jpg',
+            'La imagen de la Virgen de las Angustias en su entrada en la Catedral\nCanon Rf 50 mm. Longitud focal 50 mm. f/2,8 a 1/400 s. ISO 6400\n27/08/2026'
+        )">                                        
+</div>
+
+</body>
+
+</html>
