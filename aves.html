@@ -2,15 +2,9 @@
 
 <html lang="es">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&display=swap" rel="stylesheet">
-
 <head>
 
-    <!-- Google tag (gtag.js) -->
+ <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-MT3DKL07EW"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -29,6 +23,78 @@
     <link rel="stylesheet" href="estilos.css">
 
 </head>
+
+<div id="lightbox" class="lightbox">
+
+    <span class="cerrar" onclick="cerrarLightbox()">&times;</span>
+
+    <span class="anterior" onclick="fotoAnterior()">&#10094;</span>
+
+    <img id="imagenLightbox" class="imagen-lightbox">
+
+    <span class="siguiente" onclick="fotoSiguiente()">&#10095;</span>
+
+    <p id="textoLightbox" class="texto-lightbox"></p>
+
+</div>
+
+<script>
+
+let indiceActual = 0;
+
+const fotos = [];
+
+function abrirLightbox(indice, imagen, texto) {
+
+    indiceActual = indice;
+
+    fotos[indice] = {
+        imagen: imagen,
+        texto: texto
+    };
+
+    document.getElementById("lightbox").style.display = "flex";
+
+    document.getElementById("imagenLightbox").src = imagen;
+
+    document.getElementById("textoLightbox").innerText = texto;
+}
+
+function fotoAnterior() {
+
+    let nuevoIndice = indiceActual - 1;
+
+    if (nuevoIndice < 0) {
+        nuevoIndice = document.querySelectorAll('[data-indice]').length - 1;
+    }
+
+    document.querySelector(
+        '[data-indice="' + nuevoIndice + '"]'
+    ).click();
+}
+
+function fotoSiguiente() {
+
+    let nuevoIndice = indiceActual + 1;
+
+    const totalFotos = document.querySelectorAll('[data-indice]').length;
+
+    if (nuevoIndice >= totalFotos) {
+        nuevoIndice = 0;
+    }
+
+    document.querySelector(
+        '[data-indice="' + nuevoIndice + '"]'
+    ).click();
+}
+
+function cerrarLightbox() {
+
+    document.getElementById("lightbox").style.display = "none";
+
+}
+
+</script>
 
 <body>
 
@@ -58,15 +124,28 @@
 
     <h2>Aves</h2>
 
-    <div class="galeria">
+   <div class="galeria">
 
-        <img src="Fotos/Fauna/Aves/Curruca.jpg" alt="Curruca">
+    <img
+        data-indice="0"
+        src="Fotos\Fauna\aves\galeria\aves 1.jpg"
+        alt="Ave 1"
+        onclick="abrirLightbox(
+            0,
+            'Fotos/Fauna/aves/lightbox/aves 1.jpg',
+            'Arrendajo euroasiático <em>Garrulus glandarius</em>\nCanon Rf 100-400 mm f/5,6-8 IS USM. Longitud focal 400 mm. f/9 a 1/640 s. ISO 3200\n26/09/2026'
+        )">
 
-        <img src="Fotos/Fauna/Aves/Papamoscas.jpg" alt="Papamoscas">
-
-        <img src="Fotos/Fauna/Aves/Pinzón.jpg" alt="Pinzón">
-
-    </div>
+    <img
+        data-indice="1"
+        src="Fotos/Fauna/aves/galeria/aves 2.jpg"
+        alt="Ave 2"
+        onclick="abrirLightbox(
+            1,
+            'Fotos/Fauna/aves/lightbox/aves 2.jpg',
+            'Abejarruco europeo <em>Merops apiaster</em>\nCanon Rf 100-400 mm f/5,6-8 IS USM. Longitud focal 400 mm. f/8 a 1/1000 s. ISO 3200\n10/09/2026'
+        )">                                        
+</div>
 
 </body>
 
