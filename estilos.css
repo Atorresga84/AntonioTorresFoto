@@ -94,17 +94,18 @@ nav a:hover {
 /* GALERÍAS */
 
 .galeria {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 20px;
+    column-count: 3;
+    column-gap: 20px;
     padding: 20px;
 }
 
 .galeria img {
     width: 100%;
+    margin-bottom: 20px;
     border-radius: 12px;
     display: block;
     transition: transform 0.3s ease;
+    cursor: pointer;
 }
 
 .galeria img:hover {
@@ -260,7 +261,8 @@ nav a:hover {
     }
 
     .galeria {
-        grid-template-columns: 1fr;
+        column-count: 1;
+        column-gap: 10px;
         padding: 10px;
     }
 
@@ -271,6 +273,12 @@ nav a:hover {
     .texto-lightbox {
         font-size: 16px;
     }
+
+    .anterior,
+    .siguiente {
+        font-size: 40px;
+    }
+
 }
 
 .contacto {
