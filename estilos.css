@@ -89,24 +89,17 @@ nav a:hover {
 
 .titulo-categoria {
     position: absolute;
-
     top: 50%;
     left: 50%;
-
     transform: translate(-50%, -50%);
 
-    color: white;
-    font-size: 20px;
-    font-weight: 600;
-    letter-spacing: 3px;
-
-    background-color: rgba(0, 0, 0, 0.5);
-
-    padding: 10px 20px;
-
-    border-radius: 8px;
+    width: 90%;
 
     text-align: center;
+
+    color: white;
+
+    white-space: normal;
 }
 
 /* GALERÍAS */
