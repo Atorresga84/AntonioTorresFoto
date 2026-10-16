@@ -167,7 +167,7 @@ nav a:hover {
     max-width: 900px;
     margin-top: 15px;
     text-align: center;
-    font-size: 13px;
+    font-size: 10px;
     color: #cccccc;
 }
 
@@ -199,7 +199,7 @@ nav a:hover {
 
 .texto-lightbox {
     color: white;
-    font-size: 22px;
+    font-size: 16px;
     text-align: center;
     margin-top: 20px;
     max-width: 900px;
