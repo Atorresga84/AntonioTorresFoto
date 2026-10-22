@@ -1,14 +1,3 @@
-/* ============================================================
-   LIGHTBOX MEJORADO
-   - Cerrar: X, Esc (solo si no está en fullscreen), clic fuera
-   - Navegar: flechas (solo escritorio), teclado (← →), swipe (móvil)
-   - Precarga de imágenes anterior y siguiente
-   - Contador "3 / 12"
-   - Botón de pantalla completa
-   - Al salir de fullscreen, el lightbox permanece abierto
-   - Sin pies de foto
-   ============================================================ */
-
 (function () {
     let indiceActual = 0;
     let imagenesGaleria = [];
@@ -19,10 +8,21 @@
     document.addEventListener('DOMContentLoaded', function () {
         imagenesGaleria = Array.from(document.querySelectorAll('[data-indice]'));
 
+        // 🔍 DEBUG: imprime cuántas imágenes hay y sus índices
+        console.log('=== DEBUG LIGHTBOX ===');
+        console.log('Total imágenes con data-indice:', imagenesGaleria.length);
+        imagenesGaleria.forEach(function (img, i) {
+            console.log(
+                'Posición en array:', i,
+                '| data-indice:', img.getAttribute('data-indice'),
+                '| src:', img.getAttribute('src')
+            );
+        });
+        console.log('======================');
+
         const lightbox = document.getElementById('lightbox');
         if (!lightbox) return;
 
-        // Crea el contador si no existe
         if (!document.getElementById('contadorLightbox')) {
             const contador = document.createElement('div');
             contador.id = 'contadorLightbox';
@@ -30,19 +30,15 @@
             lightbox.appendChild(contador);
         }
 
-        // Botón pantalla completa si el navegador lo soporta
         const btnPantalla = document.querySelector('.pantalla-completa');
         if (btnPantalla) {
             const soportado = document.fullscreenEnabled ||
                               document.webkitFullscreenEnabled ||
                               document.mozFullScreenEnabled ||
                               document.msFullscreenEnabled;
-            if (soportado) {
-                btnPantalla.classList.add('visible');
-            }
+            if (soportado) btnPantalla.classList.add('visible');
         }
 
-        // Swipe en móvil
         lightbox.addEventListener('touchstart', function (e) {
             touchStartX = e.changedTouches[0].screenX;
         }, { passive: true });
@@ -55,14 +51,10 @@
 
     function gestionarSwipe() {
         const umbral = 50;
-        if (touchEndX < touchStartX - umbral) {
-            fotoSiguiente();
-        } else if (touchEndX > touchStartX + umbral) {
-            fotoAnterior();
-        }
+        if (touchEndX < touchStartX - umbral) fotoSiguiente();
+        else if (touchEndX > touchStartX + umbral) fotoAnterior();
     }
 
-    // Devuelve true si el navegador está en pantalla completa
     function estaEnFullscreen() {
         return !!(document.fullscreenElement ||
                   document.webkitFullscreenElement ||
@@ -70,7 +62,6 @@
                   document.msFullscreenElement);
     }
 
-    // Sale de pantalla completa si se está en ella
     function salirDeFullscreen() {
         if (!estaEnFullscreen()) return;
         const metodo = document.exitFullscreen ||
@@ -80,39 +71,34 @@
         if (metodo) metodo.call(document);
     }
 
-    // Extrae la ruta de lightbox del atributo onclick de la imagen
     function obtenerRutaLightbox(img) {
         const onclickAttr = img.getAttribute('onclick') || '';
         const match = onclickAttr.match(/abrirLightbox\(\s*\d+\s*,\s*['"]([^'"]+)['"]/);
         return match ? match[1] : null;
     }
 
-    // Muestra la imagen correspondiente al índiceActual
     function mostrarFotoActual() {
         const img = imagenesGaleria[indiceActual];
         if (!img) return;
 
         const ruta = obtenerRutaLightbox(img);
-        if (ruta) {
-            document.getElementById('imagenLightbox').src = ruta;
-        }
+        if (ruta) document.getElementById('imagenLightbox').src = ruta;
 
         actualizarContador();
         precargar(1);
         precargar(-1);
+
+        // 🔍 DEBUG: imprime qué foto se está mostrando
+        console.log('Mostrando índice:', indiceActual, '| data-indice:', img.getAttribute('data-indice'), '| ruta:', ruta);
     }
 
     window.abrirLightbox = function (indice) {
         indiceActual = indice;
         ultimoFoco = document.activeElement;
-
         const lb = document.getElementById('lightbox');
         lb.classList.add('activo');
-
         mostrarFotoActual();
-
         document.body.style.overflow = 'hidden';
-
         setTimeout(function () {
             const cerrarBtn = document.querySelector('.cerrar');
             if (cerrarBtn) cerrarBtn.focus();
@@ -122,16 +108,10 @@
     window.cerrarLightbox = function () {
         const lb = document.getElementById('lightbox');
         if (!lb) return;
-
         salirDeFullscreen();
-
         lb.classList.remove('activo');
         document.body.style.overflow = '';
-
-        if (ultimoFoco) {
-            ultimoFoco.focus();
-            ultimoFoco = null;
-        }
+        if (ultimoFoco) { ultimoFoco.focus(); ultimoFoco = null; }
     };
 
     window.fotoSiguiente = function () {
@@ -148,9 +128,7 @@
 
     function actualizarContador() {
         const contador = document.getElementById('contadorLightbox');
-        if (contador) {
-            contador.textContent = (indiceActual + 1) + ' / ' + imagenesGaleria.length;
-        }
+        if (contador) contador.textContent = (indiceActual + 1) + ' / ' + imagenesGaleria.length;
     }
 
     function precargar(direccion) {
@@ -158,16 +136,12 @@
         const total = imagenesGaleria.length;
         const siguienteIndice = (indiceActual + direccion + total) % total;
         const ruta = obtenerRutaLightbox(imagenesGaleria[siguienteIndice]);
-        if (ruta) {
-            const pre = new Image();
-            pre.src = ruta;
-        }
+        if (ruta) { const pre = new Image(); pre.src = ruta; }
     }
 
     window.togglePantallaCompleta = function () {
         const lb = document.getElementById('lightbox');
         if (!lb) return;
-
         if (!estaEnFullscreen()) {
             const metodo = lb.requestFullscreen ||
                            lb.webkitRequestFullscreen ||
@@ -179,34 +153,19 @@
         }
     };
 
-    // ============================================================
-    // TECLADO
-    // ============================================================
-
     document.addEventListener('keydown', function (e) {
         const lb = document.getElementById('lightbox');
         if (!lb || !lb.classList.contains('activo')) return;
-
         if (e.key === 'Escape') {
-            if (estaEnFullscreen()) {
-                salirDeFullscreen();
-            } else {
-                cerrarLightbox();
-            }
-        } else if (e.key === 'ArrowRight') {
-            fotoSiguiente();
-        } else if (e.key === 'ArrowLeft') {
-            fotoAnterior();
-        }
+            if (estaEnFullscreen()) salirDeFullscreen();
+            else cerrarLightbox();
+        } else if (e.key === 'ArrowRight') fotoSiguiente();
+        else if (e.key === 'ArrowLeft') fotoAnterior();
     });
 
-    // Clic fuera de la imagen cierra
     document.addEventListener('click', function (e) {
         const lb = document.getElementById('lightbox');
         if (!lb || !lb.classList.contains('activo')) return;
-        if (e.target === lb) {
-            cerrarLightbox();
-        }
+        if (e.target === lb) cerrarLightbox();
     });
-
 })();
