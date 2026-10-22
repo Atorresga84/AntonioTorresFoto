@@ -23,13 +23,21 @@
 
     <link rel="stylesheet" href="estilos.css">
     <link rel="stylesheet" href="lightbox.css">
+    <link rel="stylesheet" href="menu.css">
 </head>
 
 <body>
 
     <header>
         <h1>AntonioTorresFoto</h1>
-        <nav>
+
+        <button class="menu-toggle"
+                aria-label="Abrir menú"
+                aria-expanded="false"
+                aria-controls="menu-principal">
+        </button>
+
+        <nav id="menu-principal">
             <a href="index.html">Inicio</a>
             <a href="naturaleza.html">Naturaleza</a>
             <a href="religiosidad_popular.html">Religiosidad Popular</a>
@@ -48,13 +56,13 @@
                  src="Fotos/Fauna/aves/galeria/aves 1.jpg"
                  alt="Arrendajo euroasiático (Garrulus glandarius)"
                  loading="lazy"
-                 onclick="abrirLightbox(0, 'Fotos/Fauna/aves/lightbox/aves 1.jpg', 'Arrendajo euroasiático <em>Garrulus glandarius</em><br>Canon Rf 100-400 mm f/5,6-8 IS USM. Longitud focal 400 mm. f/9 a 1/640 s. ISO 3200<br>26/09/2026')">
+                 onclick="abrirLightbox(0, 'Fotos/Fauna/aves/lightbox/aves 1.jpg')">
 
             <img data-indice="1"
                  src="Fotos/Fauna/aves/galeria/aves 2.jpg"
                  alt="Abejarruco europeo (Merops apiaster)"
                  loading="lazy"
-                 onclick="abrirLightbox(1, 'Fotos/Fauna/aves/lightbox/aves 2.jpg', 'Abejarruco europeo <em>Merops apiaster</em><br>Canon Rf 100-400 mm f/5,6-8 IS USM. Longitud focal 400 mm. f/8 a 1/1000 s. ISO 3200<br>10/09/2026')">
+                 onclick="abrirLightbox(1, 'Fotos/Fauna/aves/lightbox/aves 2.jpg')">
 
         </div>
     </main>
@@ -70,10 +78,10 @@
         <button class="anterior" onclick="fotoAnterior()" aria-label="Foto anterior">&#10094;</button>
         <img id="imagenLightbox" class="imagen-lightbox" alt="Foto ampliada">
         <button class="siguiente" onclick="fotoSiguiente()" aria-label="Foto siguiente">&#10095;</button>
-        <p id="textoLightbox" class="texto-lightbox"></p>
     </div>
 
     <script src="lightbox.js"></script>
+    <script src="menu.js"></script>
 
     <footer class="footer">
         <p>&copy; 2026 Antonio Torres · Fotografía</p>

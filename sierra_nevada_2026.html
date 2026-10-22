@@ -23,13 +23,21 @@
 
     <link rel="stylesheet" href="estilos.css">
     <link rel="stylesheet" href="lightbox.css">
+    <link rel="stylesheet" href="menu.css">
 </head>
 
 <body>
 
     <header>
         <h1>AntonioTorresFoto</h1>
-        <nav>
+
+        <button class="menu-toggle"
+                aria-label="Abrir menú"
+                aria-expanded="false"
+                aria-controls="menu-principal">
+        </button>
+
+        <nav id="menu-principal">
             <a href="index.html">Inicio</a>
             <a href="naturaleza.html">Naturaleza</a>
             <a href="religiosidad_popular.html">Religiosidad Popular</a>
@@ -48,49 +56,49 @@
                  src="Fotos/Viajes/Sierra_Nevada_2026/galeria/Sierra Nevada 1.jpg"
                  alt="Corral del Veleta, Sierra Nevada"
                  loading="lazy"
-                 onclick="abrirLightbox(0, 'Fotos/Viajes/Sierra_Nevada_2026/lightbox/Sierra Nevada 1.jpg', 'Corral del Veleta<br>Canon Rf 24-105 mm. Longitud focal 24 mm. f/8 a 1/125 s. ISO 100<br>22/08/2026')">
+                 onclick="abrirLightbox(0, 'Fotos/Viajes/Sierra_Nevada_2026/lightbox/Sierra Nevada 1.jpg')">
 
             <img data-indice="1"
                  src="Fotos/Viajes/Sierra_Nevada_2026/galeria/Sierra Nevada 2.jpg"
                  alt="Tajos de la Virgen, Sierra Nevada"
                  loading="lazy"
-                 onclick="abrirLightbox(1, 'Fotos/Viajes/Sierra_Nevada_2026/lightbox/Sierra Nevada 2.jpg', 'Tajos de la Virgen<br>Canon Rf 24-105 mm. Longitud focal 24 mm. f/8 a 1/200 s. ISO 100<br>22/08/2026')">
+                 onclick="abrirLightbox(1, 'Fotos/Viajes/Sierra_Nevada_2026/lightbox/Sierra Nevada 2.jpg')">
 
             <img data-indice="2"
                  src="Fotos/Viajes/Sierra_Nevada_2026/galeria/Sierra Nevada 3.jpg"
                  alt="Mulhacén y Alcazaba desde el Veleta"
                  loading="lazy"
-                 onclick="abrirLightbox(2, 'Fotos/Viajes/Sierra_Nevada_2026/lightbox/Sierra Nevada 3.jpg', 'Mulhacén y Alcazaba desde el Veleta<br>Canon Rf 24-105 mm. Longitud focal 24 mm. f/8 a 1/200 s. ISO 100<br>22/08/2026')">
+                 onclick="abrirLightbox(2, 'Fotos/Viajes/Sierra_Nevada_2026/lightbox/Sierra Nevada 3.jpg')">
 
             <img data-indice="3"
                  src="Fotos/Viajes/Sierra_Nevada_2026/galeria/Sierra Nevada 4.jpg"
                  alt="Formación rocosa junto a la carretera de ascenso al Veleta"
                  loading="lazy"
-                 onclick="abrirLightbox(3, 'Fotos/Viajes/Sierra_Nevada_2026/lightbox/Sierra Nevada 4.jpg', 'Formación rocosa junto a la carretera de ascenso al Veleta<br>Canon Rf 100-400 mm. Longitud focal 214 mm. f/8 a 1/250 s. ISO 250<br>22/08/2026')">
+                 onclick="abrirLightbox(3, 'Fotos/Viajes/Sierra_Nevada_2026/lightbox/Sierra Nevada 4.jpg')">
 
             <img data-indice="4"
                  src="Fotos/Viajes/Sierra_Nevada_2026/galeria/Sierra Nevada 5.jpg"
                  alt="Radiotelescopio en Sierra Nevada"
                  loading="lazy"
-                 onclick="abrirLightbox(4, 'Fotos/Viajes/Sierra_Nevada_2026/lightbox/Sierra Nevada 5.jpg', 'Radiotelescopio<br>Canon Rf 100-400 mm. Longitud focal 214 mm. f/8 a 1/320 s. ISO 100<br>22/08/2026')">
+                 onclick="abrirLightbox(4, 'Fotos/Viajes/Sierra_Nevada_2026/lightbox/Sierra Nevada 5.jpg')">
 
             <img data-indice="5"
                  src="Fotos/Viajes/Sierra_Nevada_2026/galeria/Sierra Nevada 6.jpg"
                  alt="Carretera de acceso a las posiciones del Veleta"
                  loading="lazy"
-                 onclick="abrirLightbox(5, 'Fotos/Viajes/Sierra_Nevada_2026/lightbox/Sierra Nevada 6.jpg', 'Carretera de acceso a las posiciones del Veleta<br>Canon Rf 24-105 mm. Longitud focal 50 mm. f/8 a 1/250 s. ISO 100<br>22/08/2026')">
+                 onclick="abrirLightbox(5, 'Fotos/Viajes/Sierra_Nevada_2026/lightbox/Sierra Nevada 6.jpg')">
 
             <img data-indice="6"
                  src="Fotos/Viajes/Sierra_Nevada_2026/galeria/Sierra Nevada 7.jpg"
                  alt="Antiguo observatorio del Mojón del Trigo"
                  loading="lazy"
-                 onclick="abrirLightbox(6, 'Fotos/Viajes/Sierra_Nevada_2026/lightbox/Sierra Nevada 7.jpg', 'Antiguo observatorio del Mojón del Trigo<br>Canon Rf 100-400 mm. Longitud focal 100 mm. f/8 a 1/250 s. ISO 100<br>22/08/2026')">
+                 onclick="abrirLightbox(6, 'Fotos/Viajes/Sierra_Nevada_2026/lightbox/Sierra Nevada 7.jpg')">
 
             <img data-indice="7"
                  src="Fotos/Viajes/Sierra_Nevada_2026/galeria/Sierra Nevada 8.jpg"
                  alt="Virgen de las Nieves y el Veleta"
                  loading="lazy"
-                 onclick="abrirLightbox(7, 'Fotos/Viajes/Sierra_Nevada_2026/lightbox/Sierra Nevada 8.jpg', 'Virgen de las Nieves y Veleta<br>Canon Rf 100-400 mm. Longitud focal 200 mm. f/8 a 1/320 s. ISO 100<br>22/08/2026')">
+                 onclick="abrirLightbox(7, 'Fotos/Viajes/Sierra_Nevada_2026/lightbox/Sierra Nevada 8.jpg')">
 
         </div>
     </main>
@@ -106,10 +114,10 @@
         <button class="anterior" onclick="fotoAnterior()" aria-label="Foto anterior">&#10094;</button>
         <img id="imagenLightbox" class="imagen-lightbox" alt="Foto ampliada">
         <button class="siguiente" onclick="fotoSiguiente()" aria-label="Foto siguiente">&#10095;</button>
-        <p id="textoLightbox" class="texto-lightbox"></p>
     </div>
 
     <script src="lightbox.js"></script>
+    <script src="menu.js"></script>
 
     <footer class="footer">
         <p>&copy; 2026 Antonio Torres · Fotografía</p>

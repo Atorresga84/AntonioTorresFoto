@@ -23,13 +23,21 @@
 
     <link rel="stylesheet" href="estilos.css">
     <link rel="stylesheet" href="lightbox.css">
+    <link rel="stylesheet" href="menu.css">
 </head>
 
 <body>
 
     <header>
         <h1>AntonioTorresFoto</h1>
-        <nav>
+
+        <button class="menu-toggle"
+                aria-label="Abrir menú"
+                aria-expanded="false"
+                aria-controls="menu-principal">
+        </button>
+
+        <nav id="menu-principal">
             <a href="index.html">Inicio</a>
             <a href="naturaleza.html">Naturaleza</a>
             <a href="religiosidad_popular.html">Religiosidad Popular</a>
@@ -48,31 +56,31 @@
                  src="Fotos/religiosidad popular/virgen_angustias_2026/galeria/virgen_angustias_2026 1.jpg"
                  alt="La Virgen de las Angustias avanzando por la calle Marqués de Gerona"
                  loading="lazy"
-                 onclick="abrirLightbox(0, 'Fotos/religiosidad popular/virgen_angustias_2026/lightbox/virgen_angustias_2026 1.jpg', 'La imagen de la Virgen de las Angustias avanza por la calle Marqués de Gerona<br>Canon Rf 50 mm. Longitud focal 50 mm. f/5,6 a 1/500 s. ISO 800<br>27/09/2026')">
+                 onclick="abrirLightbox(0, 'Fotos/religiosidad popular/virgen_angustias_2026/lightbox/virgen_angustias_2026 1.jpg')">
 
             <img data-indice="1"
                  src="Fotos/religiosidad popular/virgen_angustias_2026/galeria/virgen_angustias_2026 2.jpg"
                  alt="La Virgen de las Angustias por la calle Marqués de Gerona"
                  loading="lazy"
-                 onclick="abrirLightbox(1, 'Fotos/religiosidad popular/virgen_angustias_2026/lightbox/virgen_angustias_2026 2.jpg', 'La imagen de la Virgen de las Angustias avanza por la calle Marqués de Gerona<br>Canon Rf 50 mm. Longitud focal 50 mm. f/5,6 a 1/400 s. ISO 800<br>27/09/2026')">
+                 onclick="abrirLightbox(1, 'Fotos/religiosidad popular/virgen_angustias_2026/lightbox/virgen_angustias_2026 2.jpg')">
 
             <img data-indice="2"
                  src="Fotos/religiosidad popular/virgen_angustias_2026/galeria/virgen_angustias_2026 3.jpg"
                  alt="La Virgen de las Angustias frente a la entrada de su basílica"
                  loading="lazy"
-                 onclick="abrirLightbox(2, 'Fotos/religiosidad popular/virgen_angustias_2026/lightbox/virgen_angustias_2026 3.jpg', 'La imagen de la Virgen de las Angustias frente a la entrada de su basílica<br>Canon Rf 85 mm. Longitud focal 85 mm. f/2,8 a 1/200 s. ISO 6400<br>27/08/2026')">
+                 onclick="abrirLightbox(2, 'Fotos/religiosidad popular/virgen_angustias_2026/lightbox/virgen_angustias_2026 3.jpg')">
 
             <img data-indice="3"
                  src="Fotos/religiosidad popular/virgen_angustias_2026/galeria/virgen_angustias_2026 4.jpg"
                  alt="La Virgen de las Angustias en la Carrera de la Virgen"
                  loading="lazy"
-                 onclick="abrirLightbox(3, 'Fotos/religiosidad popular/virgen_angustias_2026/lightbox/virgen_angustias_2026 4.jpg', 'La imagen de la Virgen de las Angustias en la Carrera de la Virgen<br>Canon Rf 85 mm. Longitud focal 85 mm. f/2,8 a 1/500 s. ISO 6400<br>27/08/2026')">
+                 onclick="abrirLightbox(3, 'Fotos/religiosidad popular/virgen_angustias_2026/lightbox/virgen_angustias_2026 4.jpg')">
 
             <img data-indice="4"
                  src="Fotos/religiosidad popular/virgen_angustias_2026/galeria/virgen_angustias_2026 5.jpg"
                  alt="La Virgen de las Angustias entrando en la Catedral"
                  loading="lazy"
-                 onclick="abrirLightbox(4, 'Fotos/religiosidad popular/virgen_angustias_2026/lightbox/virgen_angustias_2026 5.jpg', 'La imagen de la Virgen de las Angustias en su entrada en la Catedral<br>Canon Rf 50 mm. Longitud focal 50 mm. f/2,8 a 1/400 s. ISO 6400<br>27/08/2026')">
+                 onclick="abrirLightbox(4, 'Fotos/religiosidad popular/virgen_angustias_2026/lightbox/virgen_angustias_2026 5.jpg')">
 
         </div>
     </main>
@@ -88,10 +96,10 @@
         <button class="anterior" onclick="fotoAnterior()" aria-label="Foto anterior">&#10094;</button>
         <img id="imagenLightbox" class="imagen-lightbox" alt="Foto ampliada">
         <button class="siguiente" onclick="fotoSiguiente()" aria-label="Foto siguiente">&#10095;</button>
-        <p id="textoLightbox" class="texto-lightbox"></p>
     </div>
 
     <script src="lightbox.js"></script>
+    <script src="menu.js"></script>
 
     <footer class="footer">
         <p>&copy; 2026 Antonio Torres · Fotografía</p>
