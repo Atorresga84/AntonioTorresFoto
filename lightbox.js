@@ -6,6 +6,7 @@
    - Contador "3 / 12"
    - Botón de pantalla completa
    - Al salir de fullscreen, el lightbox permanece abierto
+   - Sin pies de foto
    ============================================================ */
 
 (function () {
@@ -79,18 +80,36 @@
         if (metodo) metodo.call(document);
     }
 
-    window.abrirLightbox = function (indice, imagen) {
+    // Extrae la ruta de lightbox del atributo onclick de la imagen
+    function obtenerRutaLightbox(img) {
+        const onclickAttr = img.getAttribute('onclick') || '';
+        const match = onclickAttr.match(/abrirLightbox\(\s*\d+\s*,\s*['"]([^'"]+)['"]/);
+        return match ? match[1] : null;
+    }
+
+    // Muestra la imagen correspondiente al índiceActual
+    function mostrarFotoActual() {
+        const img = imagenesGaleria[indiceActual];
+        if (!img) return;
+
+        const ruta = obtenerRutaLightbox(img);
+        if (ruta) {
+            document.getElementById('imagenLightbox').src = ruta;
+        }
+
+        actualizarContador();
+        precargar(1);
+        precargar(-1);
+    }
+
+    window.abrirLightbox = function (indice) {
         indiceActual = indice;
         ultimoFoco = document.activeElement;
 
         const lb = document.getElementById('lightbox');
         lb.classList.add('activo');
 
-        document.getElementById('imagenLightbox').src = imagen;
-
-        actualizarContador();
-        precargar(1);
-        precargar(-1);
+        mostrarFotoActual();
 
         document.body.style.overflow = 'hidden';
 
@@ -104,7 +123,6 @@
         const lb = document.getElementById('lightbox');
         if (!lb) return;
 
-        // Si estamos en fullscreen, salir primero
         salirDeFullscreen();
 
         lb.classList.remove('activo');
@@ -119,13 +137,13 @@
     window.fotoSiguiente = function () {
         if (imagenesGaleria.length === 0) return;
         indiceActual = (indiceActual + 1) % imagenesGaleria.length;
-        imagenesGaleria[indiceActual].click();
+        mostrarFotoActual();
     };
 
     window.fotoAnterior = function () {
         if (imagenesGaleria.length === 0) return;
         indiceActual = (indiceActual - 1 + imagenesGaleria.length) % imagenesGaleria.length;
-        imagenesGaleria[indiceActual].click();
+        mostrarFotoActual();
     };
 
     function actualizarContador() {
@@ -139,13 +157,10 @@
         if (imagenesGaleria.length === 0) return;
         const total = imagenesGaleria.length;
         const siguienteIndice = (indiceActual + direccion + total) % total;
-        const siguienteImg = imagenesGaleria[siguienteIndice];
-
-        const onclickAttr = siguienteImg.getAttribute('onclick') || '';
-        const match = onclickAttr.match(/abrirLightbox\(\s*\d+\s*,\s*['"]([^'"]+)['"]/);
-        if (match && match[1]) {
+        const ruta = obtenerRutaLightbox(imagenesGaleria[siguienteIndice]);
+        if (ruta) {
             const pre = new Image();
-            pre.src = match[1];
+            pre.src = ruta;
         }
     }
 
@@ -154,14 +169,12 @@
         if (!lb) return;
 
         if (!estaEnFullscreen()) {
-            // Entrar en pantalla completa
             const metodo = lb.requestFullscreen ||
                            lb.webkitRequestFullscreen ||
                            lb.mozRequestFullScreen ||
                            lb.msRequestFullscreen;
             if (metodo) metodo.call(lb);
         } else {
-            // Salir solo de pantalla completa, sin cerrar el lightbox
             salirDeFullscreen();
         }
     };
@@ -174,9 +187,6 @@
         const lb = document.getElementById('lightbox');
         if (!lb || !lb.classList.contains('activo')) return;
 
-        // Esc:
-        // - Si estamos en fullscreen: sale de fullscreen y SE QUEDA en el lightbox
-        // - Si NO estamos en fullscreen: cierra el lightbox
         if (e.key === 'Escape') {
             if (estaEnFullscreen()) {
                 salirDeFullscreen();
@@ -198,12 +208,5 @@
             cerrarLightbox();
         }
     });
-
-    // ============================================================
-    // CAMBIO DE ESTADO FULLSCREEN
-    // ============================================================
-    // NO cerramos el lightbox al salir de fullscreen.
-    // Simplemente dejamos que el CSS ajuste la foto al tamaño normal.
-    // ============================================================
 
 })();
