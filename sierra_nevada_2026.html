@@ -90,3 +90,30 @@
                  src="Fotos/Viajes/Sierra_Nevada_2026/galeria/Sierra Nevada 8.jpg"
                  alt="Virgen de las Nieves y el Veleta"
                  loading="lazy"
+                 onclick="abrirLightbox(7, 'Fotos/Viajes/Sierra_Nevada_2026/lightbox/Sierra Nevada 8.jpg', 'Virgen de las Nieves y Veleta<br>Canon Rf 100-400 mm. Longitud focal 200 mm. f/8 a 1/320 s. ISO 100<br>22/08/2026')">
+
+        </div>
+    </main>
+
+    <div id="lightbox"
+         class="lightbox"
+         role="dialog"
+         aria-modal="true"
+         aria-label="Visor de fotos ampliadas">
+
+        <button class="pantalla-completa" onclick="togglePantallaCompleta()" aria-label="Pantalla completa" title="Pantalla completa">&#9974;</button>
+        <button class="cerrar" onclick="cerrarLightbox()" aria-label="Cerrar visor">&times;</button>
+        <button class="anterior" onclick="fotoAnterior()" aria-label="Foto anterior">&#10094;</button>
+        <img id="imagenLightbox" class="imagen-lightbox" alt="Foto ampliada">
+        <button class="siguiente" onclick="fotoSiguiente()" aria-label="Foto siguiente">&#10095;</button>
+        <p id="textoLightbox" class="texto-lightbox"></p>
+    </div>
+
+    <script src="lightbox.js"></script>
+
+    <footer class="footer">
+        <p>&copy; 2026 Antonio Torres · Fotografía</p>
+    </footer>
+
+</body>
+</html>
