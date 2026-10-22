@@ -1,11 +1,11 @@
 /* ============================================================
    LIGHTBOX MEJORADO
-   - Cerrar: X, Esc, clic fuera
+   - Cerrar: X, Esc (solo si no está en fullscreen), clic fuera
    - Navegar: flechas (solo escritorio), teclado (← →), swipe (móvil)
    - Precarga de imágenes anterior y siguiente
    - Contador "3 / 12"
    - Botón de pantalla completa
-   - Sin pies de foto
+   - Al salir de fullscreen, el lightbox permanece abierto
    ============================================================ */
 
 (function () {
@@ -61,6 +61,24 @@
         }
     }
 
+    // Devuelve true si el navegador está en pantalla completa
+    function estaEnFullscreen() {
+        return !!(document.fullscreenElement ||
+                  document.webkitFullscreenElement ||
+                  document.mozFullScreenElement ||
+                  document.msFullscreenElement);
+    }
+
+    // Sale de pantalla completa si se está en ella
+    function salirDeFullscreen() {
+        if (!estaEnFullscreen()) return;
+        const metodo = document.exitFullscreen ||
+                       document.webkitExitFullscreen ||
+                       document.mozCancelFullScreen ||
+                       document.msExitFullscreen;
+        if (metodo) metodo.call(document);
+    }
+
     window.abrirLightbox = function (indice, imagen) {
         indiceActual = indice;
         ultimoFoco = document.activeElement;
@@ -86,17 +104,8 @@
         const lb = document.getElementById('lightbox');
         if (!lb) return;
 
-        const estaEnFullscreen = document.fullscreenElement ||
-                                 document.webkitFullscreenElement ||
-                                 document.mozFullScreenElement ||
-                                 document.msFullscreenElement;
-        if (estaEnFullscreen) {
-            const metodo = document.exitFullscreen ||
-                           document.webkitExitFullscreen ||
-                           document.mozCancelFullScreen ||
-                           document.msExitFullscreen;
-            if (metodo) metodo.call(document);
-        }
+        // Si estamos en fullscreen, salir primero
+        salirDeFullscreen();
 
         lb.classList.remove('activo');
         document.body.style.overflow = '';
@@ -144,33 +153,36 @@
         const lb = document.getElementById('lightbox');
         if (!lb) return;
 
-        const estaEnFullscreen = document.fullscreenElement ||
-                                 document.webkitFullscreenElement ||
-                                 document.mozFullScreenElement ||
-                                 document.msFullscreenElement;
-
-        if (!estaEnFullscreen) {
+        if (!estaEnFullscreen()) {
+            // Entrar en pantalla completa
             const metodo = lb.requestFullscreen ||
                            lb.webkitRequestFullscreen ||
                            lb.mozRequestFullScreen ||
                            lb.msRequestFullscreen;
             if (metodo) metodo.call(lb);
         } else {
-            const metodo = document.exitFullscreen ||
-                           document.webkitExitFullscreen ||
-                           document.mozCancelFullScreen ||
-                           document.msExitFullscreen;
-            if (metodo) metodo.call(document);
+            // Salir solo de pantalla completa, sin cerrar el lightbox
+            salirDeFullscreen();
         }
     };
 
-    // Teclado: Esc, ← →
+    // ============================================================
+    // TECLADO
+    // ============================================================
+
     document.addEventListener('keydown', function (e) {
         const lb = document.getElementById('lightbox');
         if (!lb || !lb.classList.contains('activo')) return;
 
+        // Esc:
+        // - Si estamos en fullscreen: sale de fullscreen y SE QUEDA en el lightbox
+        // - Si NO estamos en fullscreen: cierra el lightbox
         if (e.key === 'Escape') {
-            cerrarLightbox();
+            if (estaEnFullscreen()) {
+                salirDeFullscreen();
+            } else {
+                cerrarLightbox();
+            }
         } else if (e.key === 'ArrowRight') {
             fotoSiguiente();
         } else if (e.key === 'ArrowLeft') {
@@ -187,23 +199,11 @@
         }
     });
 
-    // Salir de fullscreen con Esc del navegador → cerrar lightbox
-    function alSalirDeFullscreen() {
-        const lb = document.getElementById('lightbox');
-        if (!lb) return;
-        const estaEnFullscreen = document.fullscreenElement ||
-                                 document.webkitFullscreenElement ||
-                                 document.mozFullScreenElement ||
-                                 document.msFullscreenElement;
-        if (!estaEnFullscreen && lb.classList.contains('activo')) {
-            lb.classList.remove('activo');
-            document.body.style.overflow = '';
-        }
-    }
-
-    document.addEventListener('fullscreenchange', alSalirDeFullscreen);
-    document.addEventListener('webkitfullscreenchange', alSalirDeFullscreen);
-    document.addEventListener('mozfullscreenchange', alSalirDeFullscreen);
-    document.addEventListener('MSFullscreenChange', alSalirDeFullscreen);
+    // ============================================================
+    // CAMBIO DE ESTADO FULLSCREEN
+    // ============================================================
+    // NO cerramos el lightbox al salir de fullscreen.
+    // Simplemente dejamos que el CSS ajuste la foto al tamaño normal.
+    // ============================================================
 
 })();
