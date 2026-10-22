@@ -1,0 +1,160 @@
+/* ============================================================
+   LIGHTBOX MEJORADO
+   ============================================================ */
+
+.lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.96);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    touch-action: none;
+}
+
+.lightbox.activo {
+    display: flex;
+    opacity: 1;
+}
+
+/* Imagen principal */
+.imagen-lightbox {
+    max-width: 90vw;
+    max-height: 80vh;
+    object-fit: contain;
+    border-radius: 10px;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+/* Texto descriptivo debajo */
+.texto-lightbox {
+    color: white;
+    font-size: 16px;
+    text-align: center;
+    margin-top: 20px;
+    max-width: 900px;
+    padding: 0 20px;
+    white-space: pre-line;
+    line-height: 1.5;
+}
+
+/* Contador "3 / 12" */
+.contador-lightbox {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #ccc;
+    font-family: "Cinzel", serif;
+    font-size: 16px;
+    letter-spacing: 2px;
+    z-index: 10000;
+    user-select: none;
+}
+
+/* Botón cerrar */
+.cerrar {
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    color: white;
+    font-size: 50px;
+    cursor: pointer;
+    line-height: 1;
+    z-index: 10000;
+    background: none;
+    border: none;
+    padding: 5px 15px;
+    transition: color 0.2s ease;
+}
+
+.cerrar:hover {
+    color: #d4b98c;
+}
+
+/* Flechas anterior/siguiente */
+.anterior,
+.siguiente {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    font-size: 60px;
+    font-weight: bold;
+    cursor: pointer;
+    user-select: none;
+    z-index: 10000;
+    background: none;
+    border: none;
+    padding: 15px 20px;
+    transition: color 0.2s ease;
+}
+
+.anterior:hover,
+.siguiente:hover {
+    color: #d4b98c;
+}
+
+.anterior {
+    left: 20px;
+}
+
+.siguiente {
+    right: 20px;
+}
+
+/* Foco visible para accesibilidad (teclado) */
+.cerrar:focus-visible,
+.anterior:focus-visible,
+.siguiente:focus-visible {
+    outline: 2px solid #d4b98c;
+    outline-offset: 4px;
+}
+
+/* Responsive móvil */
+@media (max-width: 768px) {
+    .lightbox {
+        padding: 10px;
+    }
+
+    .imagen-lightbox {
+        max-width: 95vw;
+        max-height: 70vh;
+    }
+
+    .texto-lightbox {
+        font-size: 14px;
+        margin-top: 12px;
+    }
+
+    .contador-lightbox {
+        top: 15px;
+        font-size: 14px;
+    }
+
+    .cerrar {
+        top: 5px;
+        right: 10px;
+        font-size: 40px;
+    }
+
+    .anterior,
+    .siguiente {
+        font-size: 45px;
+        padding: 10px 12px;
+    }
+
+    .anterior {
+        left: 5px;
+    }
+
+    .siguiente {
+        right: 5px;
+    }
+}
