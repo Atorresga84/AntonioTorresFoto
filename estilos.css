@@ -145,7 +145,7 @@ nav a:hover {
     display: block;
     transition: transform 0.3s ease;
     cursor: pointer;
-    break-inside: avoid; /* evita que una imagen se corte entre columnas */
+    break-inside: avoid;
 }
 
 .galeria img:hover {
@@ -267,16 +267,59 @@ nav a:hover {
    ============================================================ */
 
 .sobremi {
-    max-width: 900px;
+    max-width: 800px;
     margin: 50px auto;
     padding: 0 20px;
-    font-size: 30px;
+    font-size: 22px;
     line-height: 1.8;
 }
 
 .sobremi p {
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 24px;
+}
+
+.sobremi a {
+    color: #d4b98c;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(212, 185, 140, 0.5);
+    transition: color 0.2s ease;
+}
+
+.sobremi a:hover {
+    color: #ffffff;
+}
+
+.foto-autor {
+    display: block;
+    max-width: 300px;
+    width: 100%;
+    margin: 0 auto 40px auto;
+    border-radius: 50%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+}
+
+.firma {
+    font-family: "Cinzel", serif;
+    font-style: italic;
+    font-size: 20px;
+    color: #aaaaaa;
+    text-align: right;
+    margin-top: 40px;
+}
+
+.redes {
+    text-align: center;
+    font-size: 18px;
+    margin-top: 30px;
+}
+
+.divisor {
+    border: none;
+    border-top: 1px solid #333;
+    width: 100px;
+    margin: 30px auto 50px auto;
 }
 
 /* ============================================================
@@ -303,6 +346,24 @@ nav a:hover {
 
 .contacto a:hover {
     color: #cccccc;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+
+.footer {
+    text-align: center;
+    padding: 40px 20px 30px 20px;
+    margin-top: 60px;
+    border-top: 1px solid #222;
+    color: #888;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+.footer p {
+    margin: 0;
 }
 
 /* ============================================================
@@ -408,7 +469,25 @@ nav a:hover {
         margin: 30px auto;
     }
 
+    .foto-autor {
+        max-width: 200px;
+        margin-bottom: 30px;
+    }
+
+    .firma {
+        font-size: 18px;
+    }
+
+    .divisor {
+        margin: 20px auto 30px auto;
+    }
+
     .contacto p {
         font-size: 18px;
+    }
+
+    .footer {
+        font-size: 12px;
+        margin-top: 40px;
     }
 }
