@@ -1,5 +1,9 @@
 /* ============================================================
    LIGHTBOX MEJORADO
+   - Cerrar: X, Esc, clic fuera
+   - Navegar: flechas, teclado (← →), swipe en móvil
+   - Precarga de imágenes anterior y siguiente
+   - Contador "3 / 12" (sin solaparse con la foto)
    ============================================================ */
 
 .lightbox {
@@ -11,7 +15,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    padding: 20px;
+    padding: 70px 20px 20px 20px;
     opacity: 0;
     transition: opacity 0.25s ease;
     touch-action: none;
@@ -25,7 +29,7 @@
 /* Imagen principal */
 .imagen-lightbox {
     max-width: 90vw;
-    max-height: 80vh;
+    max-height: 75vh;
     object-fit: contain;
     border-radius: 10px;
     user-select: none;
@@ -46,7 +50,7 @@
 
 /* Contador "3 / 12" */
 .contador-lightbox {
-    position: absolute;
+    position: fixed;
     top: 20px;
     left: 50%;
     transform: translateX(-50%);
@@ -54,8 +58,11 @@
     font-family: "Cinzel", serif;
     font-size: 16px;
     letter-spacing: 2px;
-    z-index: 10000;
+    z-index: 10001;
     user-select: none;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 4px 14px;
+    border-radius: 20px;
 }
 
 /* Botón cerrar */
@@ -120,7 +127,7 @@
 /* Responsive móvil */
 @media (max-width: 768px) {
     .lightbox {
-        padding: 10px;
+        padding: 60px 10px 10px 10px;
     }
 
     .imagen-lightbox {
@@ -136,6 +143,7 @@
     .contador-lightbox {
         top: 15px;
         font-size: 14px;
+        padding: 3px 10px;
     }
 
     .cerrar {
