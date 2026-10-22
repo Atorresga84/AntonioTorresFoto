@@ -1,10 +1,11 @@
 /* ============================================================
    LIGHTBOX MEJORADO
    - Cerrar: X, Esc, clic fuera
-   - Navegar: flechas, teclado (← →), swipe en móvil
+   - Navegar: flechas (solo escritorio), teclado (← →), swipe (móvil)
    - Precarga de imágenes anterior y siguiente
    - Contador "3 / 12"
-   - Botón de pantalla completa (si el navegador lo soporta)
+   - Botón de pantalla completa
+   - Sin pies de foto
    ============================================================ */
 
 (function () {
@@ -13,10 +14,6 @@
     let touchStartX = 0;
     let touchEndX = 0;
     let ultimoFoco = null;
-
-    // ============================================================
-    // INICIALIZACIÓN
-    // ============================================================
 
     document.addEventListener('DOMContentLoaded', function () {
         imagenesGaleria = Array.from(document.querySelectorAll('[data-indice]'));
@@ -32,7 +29,7 @@
             lightbox.appendChild(contador);
         }
 
-        // Muestra el botón de pantalla completa si el navegador lo soporta
+        // Botón pantalla completa si el navegador lo soporta
         const btnPantalla = document.querySelector('.pantalla-completa');
         if (btnPantalla) {
             const soportado = document.fullscreenEnabled ||
@@ -55,10 +52,6 @@
         }, { passive: true });
     });
 
-    // ============================================================
-    // SWIPE
-    // ============================================================
-
     function gestionarSwipe() {
         const umbral = 50;
         if (touchEndX < touchStartX - umbral) {
@@ -68,11 +61,7 @@
         }
     }
 
-    // ============================================================
-    // ABRIR / CERRAR
-    // ============================================================
-
-    window.abrirLightbox = function (indice, imagen, texto) {
+    window.abrirLightbox = function (indice, imagen) {
         indiceActual = indice;
         ultimoFoco = document.activeElement;
 
@@ -80,7 +69,6 @@
         lb.classList.add('activo');
 
         document.getElementById('imagenLightbox').src = imagen;
-        document.getElementById('textoLightbox').innerHTML = texto;
 
         actualizarContador();
         precargar(1);
@@ -98,7 +86,6 @@
         const lb = document.getElementById('lightbox');
         if (!lb) return;
 
-        // Si estamos en pantalla completa, salir primero
         const estaEnFullscreen = document.fullscreenElement ||
                                  document.webkitFullscreenElement ||
                                  document.mozFullScreenElement ||
@@ -119,10 +106,6 @@
             ultimoFoco = null;
         }
     };
-
-    // ============================================================
-    // NAVEGACIÓN
-    // ============================================================
 
     window.fotoSiguiente = function () {
         if (imagenesGaleria.length === 0) return;
@@ -157,10 +140,6 @@
         }
     }
 
-    // ============================================================
-    // PANTALLA COMPLETA
-    // ============================================================
-
     window.togglePantallaCompleta = function () {
         const lb = document.getElementById('lightbox');
         if (!lb) return;
@@ -185,10 +164,6 @@
         }
     };
 
-    // ============================================================
-    // EVENTOS GLOBALES
-    // ============================================================
-
     // Teclado: Esc, ← →
     document.addEventListener('keydown', function (e) {
         const lb = document.getElementById('lightbox');
@@ -212,8 +187,7 @@
         }
     });
 
-    // Si el usuario sale de pantalla completa con Esc del navegador,
-    // cerramos también el lightbox para no quedar en estado raro
+    // Salir de fullscreen con Esc del navegador → cerrar lightbox
     function alSalirDeFullscreen() {
         const lb = document.getElementById('lightbox');
         if (!lb) return;
@@ -221,12 +195,9 @@
                                  document.webkitFullscreenElement ||
                                  document.mozFullScreenElement ||
                                  document.msFullscreenElement;
-        if (!estaEnFullscreen) {
-            // Solo cerramos si el lightbox estaba abierto
-            if (lb.classList.contains('activo')) {
-                lb.classList.remove('activo');
-                document.body.style.overflow = '';
-            }
+        if (!estaEnFullscreen && lb.classList.contains('activo')) {
+            lb.classList.remove('activo');
+            document.body.style.overflow = '';
         }
     }
 

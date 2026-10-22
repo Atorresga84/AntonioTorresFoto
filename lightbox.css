@@ -1,10 +1,10 @@
 /* ============================================================
    LIGHTBOX MEJORADO
    - Cerrar: X, Esc, clic fuera
-   - Navegar: flechas, teclado (← →), swipe en móvil
+   - Navegar: flechas (solo escritorio), teclado (← →), swipe (móvil)
    - Precarga de imágenes anterior y siguiente
    - Contador "3 / 12"
-   - Botón de pantalla completa (oculta el texto)
+   - Botón de pantalla completa
    ============================================================ */
 
 .lightbox {
@@ -30,23 +30,16 @@
 /* Imagen principal */
 .imagen-lightbox {
     max-width: 90vw;
-    max-height: 75vh;
+    max-height: 85vh;
     object-fit: contain;
     border-radius: 10px;
     user-select: none;
     -webkit-user-drag: none;
 }
 
-/* Texto descriptivo debajo */
+/* Texto descriptivo (desactivado, se mantiene por compatibilidad) */
 .texto-lightbox {
-    color: white;
-    font-size: 16px;
-    text-align: center;
-    margin-top: 20px;
-    max-width: 900px;
-    padding: 0 20px;
-    white-space: pre-line;
-    line-height: 1.5;
+    display: none;
 }
 
 /* Contador "3 / 12" */
@@ -86,7 +79,7 @@
     color: #d4b98c;
 }
 
-/* Flechas anterior/siguiente */
+/* Flechas anterior/siguiente (escritorio) */
 .anterior,
 .siguiente {
     position: absolute;
@@ -163,7 +156,6 @@
     padding: 60px 20px 20px 20px;
 }
 
-/* La imagen ocupa todo el espacio disponible */
 .lightbox:fullscreen .imagen-lightbox {
     max-width: 100vw;
     max-height: 100vh;
@@ -176,26 +168,25 @@
     border-radius: 0;
 }
 
-/* El texto desaparece en pantalla completa */
-.lightbox:fullscreen .texto-lightbox,
-.lightbox:-webkit-full-screen .texto-lightbox {
-    display: none;
-}
+/* ============================================================
+   MÓVIL
+   ============================================================ */
 
-/* Responsive móvil */
 @media (max-width: 768px) {
+
     .lightbox {
         padding: 60px 10px 10px 10px;
     }
 
     .imagen-lightbox {
         max-width: 95vw;
-        max-height: 70vh;
+        max-height: 75vh;
     }
 
-    .texto-lightbox {
-        font-size: 14px;
-        margin-top: 12px;
+    /* Ocultar flechas: solo swipe */
+    .anterior,
+    .siguiente {
+        display: none;
     }
 
     .contador-lightbox {
@@ -216,21 +207,6 @@
         font-size: 24px;
     }
 
-    .anterior,
-    .siguiente {
-        font-size: 45px;
-        padding: 10px 12px;
-    }
-
-    .anterior {
-        left: 5px;
-    }
-
-    .siguiente {
-        right: 5px;
-    }
-
-    /* Fullscreen en móvil: misma lógica, sin texto */
     .lightbox:fullscreen .imagen-lightbox,
     .lightbox:-webkit-full-screen .imagen-lightbox {
         max-height: 100vh;

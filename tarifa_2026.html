@@ -23,13 +23,21 @@
 
     <link rel="stylesheet" href="estilos.css">
     <link rel="stylesheet" href="lightbox.css">
+    <link rel="stylesheet" href="menu.css">
 </head>
 
 <body>
 
     <header>
         <h1>AntonioTorresFoto</h1>
-        <nav>
+
+        <button class="menu-toggle"
+                aria-label="Abrir menú"
+                aria-expanded="false"
+                aria-controls="menu-principal">
+        </button>
+
+        <nav id="menu-principal">
             <a href="index.html">Inicio</a>
             <a href="naturaleza.html">Naturaleza</a>
             <a href="religiosidad_popular.html">Religiosidad Popular</a>
@@ -48,78 +56,77 @@
                  src="Fotos/Viajes/Tarifa_2026/galeria/Tarifa 1.jpg"
                  alt="Puerto de Tarifa con la Isla de las Palomas al fondo"
                  loading="lazy"
-                 onclick="abrirLightbox(0, 'Fotos/Viajes/Tarifa_2026/lightbox/Tarifa 1.jpg', 'Puerto de Tarifa. Al fondo la Isla de las Palomas<br>Canon Rf 24-105 mm. Longitud focal 54 mm. f/11 a 1/250 s. ISO 200.<br>16/09/2026')">
+                 onclick="abrirLightbox(0, 'Fotos/Viajes/Tarifa_2026/lightbox/Tarifa 1.jpg')">
 
             <img data-indice="1"
                  src="Fotos/Viajes/Tarifa_2026/galeria/Tarifa 2.jpg"
                  alt="Playa de los Lances desde la Isla de las Palomas"
                  loading="lazy"
-                 onclick="abrirLightbox(1, 'Fotos/Viajes/Tarifa_2026/lightbox/Tarifa 2.jpg', 'Playa de los Lances desde la Isla de las Palomas.<br>Canon Rf 24-105 mm. Longitud focal 24 mm. f/10 a 1/800 s. ISO 400.<br>16/09/2026')">
+                 onclick="abrirLightbox(1, 'Fotos/Viajes/Tarifa_2026/lightbox/Tarifa 2.jpg')">
 
             <img data-indice="2"
                  src="Fotos/Viajes/Tarifa_2026/galeria/Tarifa 3.jpg"
                  alt="Frontera entre el Mediterráneo y el Océano Atlántico"
                  loading="lazy"
-                 onclick="abrirLightbox(2, 'Fotos/Viajes/Tarifa_2026/lightbox/Tarifa 3.jpg', 'Frontera entre el Mediterráneo y el Océano Atlántico.<br>Canon Rf 24-105 mm. Longitud focal 44 mm. f/10 a 1/320 s. ISO 400.<br>16/09/2026')">
+                 onclick="abrirLightbox(2, 'Fotos/Viajes/Tarifa_2026/lightbox/Tarifa 3.jpg')">
 
             <img data-indice="3"
                  src="Fotos/Viajes/Tarifa_2026/galeria/Tarifa 4.jpg"
                  alt="Restos del puerto viejo de Tarifa en la Isla de las Palomas"
                  loading="lazy"
-                 onclick="abrirLightbox(3, 'Fotos/Viajes/Tarifa_2026/lightbox/Tarifa 4.jpg', 'Restos del puerto viejo de Tarifa en la Isla de las Palomas.<br>Canon Rf 24-105 mm. Longitud focal 24 mm. f/10 a 1/250 s. ISO 400.<br>16/09/2026')">
+                 onclick="abrirLightbox(3, 'Fotos/Viajes/Tarifa_2026/lightbox/Tarifa 4.jpg')">
 
             <img data-indice="4"
                  src="Fotos/Viajes/Tarifa_2026/galeria/Tarifa 5.jpg"
                  alt="Mural en Tarifa"
                  loading="lazy"
-                 onclick="abrirLightbox(4, 'Fotos/Viajes/Tarifa_2026/lightbox/Tarifa 5.jpg', 'Mural.<br>Canon Rf 24-105 mm. Longitud focal 100 mm. f/8 a 1/1250 s.<br>16/09/2026')">
+                 onclick="abrirLightbox(4, 'Fotos/Viajes/Tarifa_2026/lightbox/Tarifa 5.jpg')">
 
             <img data-indice="5"
                  src="Fotos/Viajes/Tarifa_2026/galeria/Tarifa 6.jpg"
                  alt="Playa de los Lances"
                  loading="lazy"
-                 onclick="abrirLightbox(5, 'Fotos/Viajes/Tarifa_2026/lightbox/Tarifa 6.jpg', 'Playa de los Lances.<br>Canon Rf 24-105 mm. Longitud focal 75 mm. f/8 a 1/4000 s. ISO 400.<br>16/09/2026')">
+                 onclick="abrirLightbox(5, 'Fotos/Viajes/Tarifa_2026/lightbox/Tarifa 6.jpg')">
 
             <img data-indice="6"
                  src="Fotos/Viajes/Tarifa_2026/galeria/Tarifa 7.jpg"
                  alt="Playa de los Lances"
                  loading="lazy"
-                 onclick="abrirLightbox(6, 'Fotos/Viajes/Tarifa_2026/lightbox/Tarifa 7.jpg', 'Playa de los Lances.<br>Canon Rf 24-105 mm. Longitud focal 24 mm. f/6,3 a 1/1000 s. ISO 400.<br>16/09/2026')">
+                 onclick="abrirLightbox(6, 'Fotos/Viajes/Tarifa_2026/lightbox/Tarifa 7.jpg')">
 
             <img data-indice="7"
                  src="Fotos/Viajes/Tarifa_2026/galeria/Tarifa 8.jpg"
                  alt="Sendero de acceso al Observatorio de Aves Planeadoras Punta Camorro"
                  loading="lazy"
-                 onclick="abrirLightbox(7, 'Fotos/Viajes/Tarifa_2026/lightbox/Tarifa 8.jpg', 'Sendero de acceso al Observatorio de Aves Planeadoras Punta Camorro.<br>Canon Rf 100-400 mm. Longitud focal 100 mm. f/6,3 a 1/1250 s. ISO 400.<br>16/09/2026')">
+                 onclick="abrirLightbox(7, 'Fotos/Viajes/Tarifa_2026/lightbox/Tarifa 8.jpg')">
 
             <img data-indice="8"
                  src="Fotos/Viajes/Tarifa_2026/galeria/Tarifa 9.jpg"
                  alt="Restos de una embarcación en la Playa de Bolonia"
                  loading="lazy"
-                 onclick="abrirLightbox(8, 'Fotos/Viajes/Tarifa_2026/lightbox/Tarifa 9.jpg', 'Restos de una embarcación en la Playa de Bolonia.<br>Canon Rf 24-105 mm. Longitud focal 24 mm. f/16 a 1/80 s. ISO 200.<br>17/09/2026')">
+                 onclick="abrirLightbox(8, 'Fotos/Viajes/Tarifa_2026/lightbox/Tarifa 9.jpg')">
 
             <img data-indice="9"
                  src="Fotos/Viajes/Tarifa_2026/galeria/Tarifa 10.jpg"
                  alt="Duna de Bolonia"
                  loading="lazy"
-                 onclick="abrirLightbox(9, 'Fotos/Viajes/Tarifa_2026/lightbox/Tarifa 10.jpg', 'Duna de Bolonia.<br>Canon Rf 24-105 mm. Longitud focal 105 mm. f/9 a 1/250 s. ISO 100.<br>17/09/2026')">
+                 onclick="abrirLightbox(9, 'Fotos/Viajes/Tarifa_2026/lightbox/Tarifa 10.jpg')">
 
             <img data-indice="10"
                  src="Fotos/Viajes/Tarifa_2026/galeria/Tarifa 11.jpg"
                  alt="Duna de Bolonia"
                  loading="lazy"
-                 onclick="abrirLightbox(10, 'Fotos/Viajes/Tarifa_2026/lightbox/Tarifa 11.jpg', 'Duna de Bolonia.<br>Canon Rf 24-105 mm. Longitud focal 24 mm. f/20 a 1/80 s. ISO 320.<br>17/09/2026')">
+                 onclick="abrirLightbox(10, 'Fotos/Viajes/Tarifa_2026/lightbox/Tarifa 11.jpg')">
 
             <img data-indice="11"
                  src="Fotos/Viajes/Tarifa_2026/galeria/Tarifa 12.jpg"
                  alt="Playa de Bolonia con el sol escondiéndose tras la duna"
                  loading="lazy"
-                 onclick="abrirLightbox(11, 'Fotos/Viajes/Tarifa_2026/lightbox/Tarifa 12.jpg', 'Playa de Bolonia. Al fondo el sol a punto de esconderse tras la duna.<br>Canon Rf 24-105 mm. Longitud focal 80 mm. f/7,1 a 1/3200 s. ISO 100.<br>17/09/2026')">
+                 onclick="abrirLightbox(11, 'Fotos/Viajes/Tarifa_2026/lightbox/Tarifa 12.jpg')">
 
         </div>
     </main>
 
-        <!-- LIGHTBOX (accesible) -->
     <div id="lightbox"
          class="lightbox"
          role="dialog"
@@ -131,11 +138,10 @@
         <button class="anterior" onclick="fotoAnterior()" aria-label="Foto anterior">&#10094;</button>
         <img id="imagenLightbox" class="imagen-lightbox" alt="Foto ampliada">
         <button class="siguiente" onclick="fotoSiguiente()" aria-label="Foto siguiente">&#10095;</button>
-        <p id="textoLightbox" class="texto-lightbox"></p>
     </div>
 
-    <!-- Lightbox compartido -->
     <script src="lightbox.js"></script>
+    <script src="menu.js"></script>
 
     <footer class="footer">
         <p>&copy; 2026 Antonio Torres · Fotografía</p>
