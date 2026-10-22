@@ -22,6 +22,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="lightbox.css">
 </head>
 
 <body>
@@ -38,81 +39,45 @@
         </nav>
     </header>
 
-    <h2>Aves</h2>
+    <main>
+        <h2>Aves</h2>
 
-    <div class="galeria">
+        <div class="galeria">
 
-        <img data-indice="0"
-             src="Fotos/Fauna/aves/galeria/aves 1.jpg"
-             alt="Arrendajo euroasiático (Garrulus glandarius)"
-             loading="lazy"
-             onclick="abrirLightbox(0, 'Fotos/Fauna/aves/lightbox/aves 1.jpg', 'Arrendajo euroasiático <em>Garrulus glandarius</em><br>Canon Rf 100-400 mm f/5,6-8 IS USM. Longitud focal 400 mm. f/9 a 1/640 s. ISO 3200<br>26/09/2026')">
+            <img data-indice="0"
+                 src="Fotos/Fauna/aves/galeria/aves 1.jpg"
+                 alt="Arrendajo euroasiático (Garrulus glandarius)"
+                 loading="lazy"
+                 onclick="abrirLightbox(0, 'Fotos/Fauna/aves/lightbox/aves 1.jpg', 'Arrendajo euroasiático <em>Garrulus glandarius</em><br>Canon Rf 100-400 mm f/5,6-8 IS USM. Longitud focal 400 mm. f/9 a 1/640 s. ISO 3200<br>26/09/2026')">
 
-        <img data-indice="1"
-             src="Fotos/Fauna/aves/galeria/aves 2.jpg"
-             alt="Abejarruco europeo (Merops apiaster)"
-             loading="lazy"
-             onclick="abrirLightbox(1, 'Fotos/Fauna/aves/lightbox/aves 2.jpg', 'Abejarruco europeo <em>Merops apiaster</em><br>Canon Rf 100-400 mm f/5,6-8 IS USM. Longitud focal 400 mm. f/8 a 1/1000 s. ISO 3200<br>10/09/2026')">
+            <img data-indice="1"
+                 src="Fotos/Fauna/aves/galeria/aves 2.jpg"
+                 alt="Abejarruco europeo (Merops apiaster)"
+                 loading="lazy"
+                 onclick="abrirLightbox(1, 'Fotos/Fauna/aves/lightbox/aves 2.jpg', 'Abejarruco europeo <em>Merops apiaster</em><br>Canon Rf 100-400 mm f/5,6-8 IS USM. Longitud focal 400 mm. f/8 a 1/1000 s. ISO 3200<br>10/09/2026')">
 
-    </div>
+        </div>
+    </main>
 
-    <!-- LIGHTBOX (al final del body, como debe ser) -->
-    <div id="lightbox" class="lightbox">
-        <span class="cerrar" onclick="cerrarLightbox()">&times;</span>
-        <span class="anterior" onclick="fotoAnterior()">&#10094;</span>
+    <div id="lightbox"
+         class="lightbox"
+         role="dialog"
+         aria-modal="true"
+         aria-label="Visor de fotos ampliadas">
+
+        <button class="pantalla-completa" onclick="togglePantallaCompleta()" aria-label="Pantalla completa" title="Pantalla completa">&#9974;</button>
+        <button class="cerrar" onclick="cerrarLightbox()" aria-label="Cerrar visor">&times;</button>
+        <button class="anterior" onclick="fotoAnterior()" aria-label="Foto anterior">&#10094;</button>
         <img id="imagenLightbox" class="imagen-lightbox" alt="Foto ampliada">
-        <span class="siguiente" onclick="fotoSiguiente()">&#10095;</span>
+        <button class="siguiente" onclick="fotoSiguiente()" aria-label="Foto siguiente">&#10095;</button>
         <p id="textoLightbox" class="texto-lightbox"></p>
     </div>
 
-    <script>
-    let indiceActual = 0;
-    const fotos = [];
+    <script src="lightbox.js"></script>
 
-    function abrirLightbox(indice, imagen, texto) {
-        indiceActual = indice;
-        fotos[indice] = { imagen: imagen, texto: texto };
-        document.getElementById("lightbox").style.display = "flex";
-        document.getElementById("imagenLightbox").src = imagen;
-        document.getElementById("textoLightbox").innerHTML = texto;
-        document.body.style.overflow = "hidden";
-    }
-
-    function fotoAnterior() {
-        let nuevoIndice = indiceActual - 1;
-        if (nuevoIndice < 0) {
-            nuevoIndice = document.querySelectorAll('[data-indice]').length - 1;
-        }
-        document.querySelector('[data-indice="' + nuevoIndice + '"]').click();
-    }
-
-    function fotoSiguiente() {
-        let nuevoIndice = indiceActual + 1;
-        const totalFotos = document.querySelectorAll('[data-indice]').length;
-        if (nuevoIndice >= totalFotos) {
-            nuevoIndice = 0;
-        }
-        document.querySelector('[data-indice="' + nuevoIndice + '"]').click();
-    }
-
-    function cerrarLightbox() {
-        document.getElementById("lightbox").style.display = "none";
-        document.body.style.overflow = "";
-    }
-
-    document.addEventListener("keydown", function(e) {
-        const lb = document.getElementById("lightbox");
-        if (!lb || lb.style.display !== "flex") return;
-        if (e.key === "Escape") cerrarLightbox();
-        if (e.key === "ArrowRight") fotoSiguiente();
-        if (e.key === "ArrowLeft") fotoAnterior();
-    });
-    </script>
+    <footer class="footer">
+        <p>&copy; 2026 Antonio Torres · Fotografía</p>
+    </footer>
 
 </body>
-
-<footer class="footer">
-    <p>&copy; 2026 Antonio Torres · Fotografía</p>
-</footer>
-
 </html>
