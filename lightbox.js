@@ -4,6 +4,7 @@
    - Navegar: flechas, teclado (← →), swipe en móvil
    - Precarga de imágenes anterior y siguiente
    - Contador "3 / 12"
+   - Botón de pantalla completa (si el navegador lo soporta)
    ============================================================ */
 
 (function () {
@@ -13,41 +14,63 @@
     let touchEndX = 0;
     let ultimoFoco = null;
 
-    // Se ejecuta cuando el DOM está listo
+    // ============================================================
+    // INICIALIZACIÓN
+    // ============================================================
+
     document.addEventListener('DOMContentLoaded', function () {
-        // Recoge todas las imágenes con data-indice de la página
         imagenesGaleria = Array.from(document.querySelectorAll('[data-indice]'));
 
-        // Crea el contador si no existe
         const lightbox = document.getElementById('lightbox');
-        if (lightbox && !document.getElementById('contadorLightbox')) {
+        if (!lightbox) return;
+
+        // Crea el contador si no existe
+        if (!document.getElementById('contadorLightbox')) {
             const contador = document.createElement('div');
             contador.id = 'contadorLightbox';
             contador.className = 'contador-lightbox';
             lightbox.appendChild(contador);
         }
 
-        // Swipe en móvil
-        if (lightbox) {
-            lightbox.addEventListener('touchstart', function (e) {
-                touchStartX = e.changedTouches[0].screenX;
-            }, { passive: true });
-
-            lightbox.addEventListener('touchend', function (e) {
-                touchEndX = e.changedTouches[0].screenX;
-                gestionarSwipe();
-            }, { passive: true });
+        // Muestra el botón de pantalla completa si el navegador lo soporta
+        const btnPantalla = document.querySelector('.pantalla-completa');
+        if (btnPantalla) {
+            const soportado = document.fullscreenEnabled ||
+                              document.webkitFullscreenEnabled ||
+                              document.mozFullScreenEnabled ||
+                              document.msFullscreenEnabled;
+            if (soportado) {
+                btnPantalla.classList.add('visible');
+            }
         }
+
+        // Swipe en móvil
+        lightbox.addEventListener('touchstart', function (e) {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        lightbox.addEventListener('touchend', function (e) {
+            touchEndX = e.changedTouches[0].screenX;
+            gestionarSwipe();
+        }, { passive: true });
     });
 
+    // ============================================================
+    // SWIPE
+    // ============================================================
+
     function gestionarSwipe() {
-        const umbral = 50; // píxeles mínimos para considerar swipe
+        const umbral = 50;
         if (touchEndX < touchStartX - umbral) {
             fotoSiguiente();
         } else if (touchEndX > touchStartX + umbral) {
             fotoAnterior();
         }
     }
+
+    // ============================================================
+    // ABRIR / CERRAR
+    // ============================================================
 
     window.abrirLightbox = function (indice, imagen, texto) {
         indiceActual = indice;
@@ -65,7 +88,6 @@
 
         document.body.style.overflow = 'hidden';
 
-        // Foco al botón de cerrar (accesibilidad)
         setTimeout(function () {
             const cerrarBtn = document.querySelector('.cerrar');
             if (cerrarBtn) cerrarBtn.focus();
@@ -74,15 +96,33 @@
 
     window.cerrarLightbox = function () {
         const lb = document.getElementById('lightbox');
+        if (!lb) return;
+
+        // Si estamos en pantalla completa, salir primero
+        const estaEnFullscreen = document.fullscreenElement ||
+                                 document.webkitFullscreenElement ||
+                                 document.mozFullScreenElement ||
+                                 document.msFullscreenElement;
+        if (estaEnFullscreen) {
+            const metodo = document.exitFullscreen ||
+                           document.webkitExitFullscreen ||
+                           document.mozCancelFullScreen ||
+                           document.msExitFullscreen;
+            if (metodo) metodo.call(document);
+        }
+
         lb.classList.remove('activo');
         document.body.style.overflow = '';
 
-        // Devolver el foco a donde estaba
         if (ultimoFoco) {
             ultimoFoco.focus();
             ultimoFoco = null;
         }
     };
+
+    // ============================================================
+    // NAVEGACIÓN
+    // ============================================================
 
     window.fotoSiguiente = function () {
         if (imagenesGaleria.length === 0) return;
@@ -109,7 +149,6 @@
         const siguienteIndice = (indiceActual + direccion + total) % total;
         const siguienteImg = imagenesGaleria[siguienteIndice];
 
-        // Extrae la ruta de lightbox del atributo onclick (patrón abrirLightbox(i, 'URL', ...))
         const onclickAttr = siguienteImg.getAttribute('onclick') || '';
         const match = onclickAttr.match(/abrirLightbox\(\s*\d+\s*,\s*['"]([^'"]+)['"]/);
         if (match && match[1]) {
@@ -117,6 +156,38 @@
             pre.src = match[1];
         }
     }
+
+    // ============================================================
+    // PANTALLA COMPLETA
+    // ============================================================
+
+    window.togglePantallaCompleta = function () {
+        const lb = document.getElementById('lightbox');
+        if (!lb) return;
+
+        const estaEnFullscreen = document.fullscreenElement ||
+                                 document.webkitFullscreenElement ||
+                                 document.mozFullScreenElement ||
+                                 document.msFullscreenElement;
+
+        if (!estaEnFullscreen) {
+            const metodo = lb.requestFullscreen ||
+                           lb.webkitRequestFullscreen ||
+                           lb.mozRequestFullScreen ||
+                           lb.msRequestFullscreen;
+            if (metodo) metodo.call(lb);
+        } else {
+            const metodo = document.exitFullscreen ||
+                           document.webkitExitFullscreen ||
+                           document.mozCancelFullScreen ||
+                           document.msExitFullscreen;
+            if (metodo) metodo.call(document);
+        }
+    };
+
+    // ============================================================
+    // EVENTOS GLOBALES
+    // ============================================================
 
     // Teclado: Esc, ← →
     document.addEventListener('keydown', function (e) {
@@ -140,4 +211,28 @@
             cerrarLightbox();
         }
     });
+
+    // Si el usuario sale de pantalla completa con Esc del navegador,
+    // cerramos también el lightbox para no quedar en estado raro
+    function alSalirDeFullscreen() {
+        const lb = document.getElementById('lightbox');
+        if (!lb) return;
+        const estaEnFullscreen = document.fullscreenElement ||
+                                 document.webkitFullscreenElement ||
+                                 document.mozFullScreenElement ||
+                                 document.msFullscreenElement;
+        if (!estaEnFullscreen) {
+            // Solo cerramos si el lightbox estaba abierto
+            if (lb.classList.contains('activo')) {
+                lb.classList.remove('activo');
+                document.body.style.overflow = '';
+            }
+        }
+    }
+
+    document.addEventListener('fullscreenchange', alSalirDeFullscreen);
+    document.addEventListener('webkitfullscreenchange', alSalirDeFullscreen);
+    document.addEventListener('mozfullscreenchange', alSalirDeFullscreen);
+    document.addEventListener('MSFullscreenChange', alSalirDeFullscreen);
+
 })();

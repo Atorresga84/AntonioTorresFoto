@@ -119,13 +119,14 @@
         </div>
     </main>
 
-    <!-- LIGHTBOX (accesible) -->
+        <!-- LIGHTBOX (accesible) -->
     <div id="lightbox"
          class="lightbox"
          role="dialog"
          aria-modal="true"
          aria-label="Visor de fotos ampliadas">
 
+        <button class="pantalla-completa" onclick="togglePantallaCompleta()" aria-label="Pantalla completa" title="Pantalla completa">&#9974;</button>
         <button class="cerrar" onclick="cerrarLightbox()" aria-label="Cerrar visor">&times;</button>
         <button class="anterior" onclick="fotoAnterior()" aria-label="Foto anterior">&#10094;</button>
         <img id="imagenLightbox" class="imagen-lightbox" alt="Foto ampliada">

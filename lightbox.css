@@ -4,6 +4,7 @@
    - Navegar: flechas, teclado (← →), swipe en móvil
    - Precarga de imágenes anterior y siguiente
    - Contador "3 / 12" (sin solaparse con la foto)
+   - Botón de pantalla completa
    ============================================================ */
 
 .lightbox {
@@ -116,12 +117,90 @@
     right: 20px;
 }
 
+/* Botón pantalla completa */
+.pantalla-completa {
+    position: absolute;
+    top: 15px;
+    left: 25px;
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+    line-height: 1;
+    z-index: 10000;
+    background: none;
+    border: none;
+    padding: 8px 14px;
+    transition: color 0.2s ease;
+    display: none;
+}
+
+.pantalla-completa.visible {
+    display: block;
+}
+
+.pantalla-completa:hover {
+    color: #d4b98c;
+}
+
 /* Foco visible para accesibilidad (teclado) */
 .cerrar:focus-visible,
 .anterior:focus-visible,
-.siguiente:focus-visible {
+.siguiente:focus-visible,
+.pantalla-completa:focus-visible {
     outline: 2px solid #d4b98c;
     outline-offset: 4px;
+}
+
+/* ============================================================
+   PANTALLA COMPLETA REAL
+   ============================================================ */
+
+.lightbox:fullscreen {
+    padding: 60px 20px 20px 20px;
+}
+
+.lightbox:-webkit-full-screen {
+    padding: 60px 20px 20px 20px;
+}
+
+.lightbox:fullscreen .imagen-lightbox {
+    max-width: 100vw;
+    max-height: calc(100vh - 160px);
+    border-radius: 0;
+}
+
+.lightbox:-webkit-full-screen .imagen-lightbox {
+    max-width: 100vw;
+    max-height: calc(100vh - 160px);
+    border-radius: 0;
+}
+
+.lightbox:fullscreen .texto-lightbox {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 90vw;
+    margin-top: 0;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.lightbox:-webkit-full-screen .texto-lightbox {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 90vw;
+    margin-top: 0;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    line-height: 1.4;
 }
 
 /* Responsive móvil */
@@ -152,6 +231,12 @@
         font-size: 40px;
     }
 
+    .pantalla-completa {
+        top: 5px;
+        left: 10px;
+        font-size: 24px;
+    }
+
     .anterior,
     .siguiente {
         font-size: 45px;
@@ -164,5 +249,17 @@
 
     .siguiente {
         right: 5px;
+    }
+
+    .lightbox:fullscreen .texto-lightbox,
+    .lightbox:-webkit-full-screen .texto-lightbox {
+        font-size: 12px;
+        bottom: 10px;
+        max-width: 95vw;
+    }
+
+    .lightbox:fullscreen .imagen-lightbox,
+    .lightbox:-webkit-full-screen .imagen-lightbox {
+        max-height: calc(100vh - 120px);
     }
 }
