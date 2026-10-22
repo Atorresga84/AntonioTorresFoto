@@ -1,70 +1,79 @@
 <!DOCTYPE html>
-
 <html lang="es">
 
 <head>
-
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-MT3DKL07EW"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-MT3DKL07EW');
-</script>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AntonioTorresFoto</title>
+
+    <title>Antonio Torres · Fotografía de naturaleza, fauna y viajes</title>
+    <meta name="description" content="Portfolio de fotografía de Antonio Torres: naturaleza, fauna, religiosidad popular y viajes. Descubre las últimas galerías.">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Antonio Torres · Fotografía">
+    <meta property="og:description" content="Naturaleza, fauna, religiosidad popular y viajes.">
+    <meta property="og:image" content="https://www.antoniotorresfoto.es/Fotos/og-portada.jpg">
+    <meta property="og:url" content="https://www.antoniotorresfoto.es/">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MT3DKL07EW"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-MT3DKL07EW');
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
-
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Libre+Baskerville:wght@400;700&display=swap"
-      rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="lightbox.css">
+    <link rel="stylesheet" href="menu.css">
 </head>
 
 <body>
 
     <header>
-
         <h1>AntonioTorresFoto</h1>
-
         <p class="subtitulo">
             Fotografía de naturaleza, religiosidad popular, fauna y viajes
         </p>
 
-        <nav>
+        <button class="menu-toggle"
+                aria-label="Abrir menú"
+                aria-expanded="false"
+                aria-controls="menu-principal">
+        </button>
 
+        <nav id="menu-principal">
             <a href="index.html">Inicio</a>
-
             <a href="naturaleza.html">Naturaleza</a>
-
             <a href="religiosidad_popular.html">Religiosidad Popular</a>
-
             <a href="viajes.html">Viajes</a>
-
             <a href="sobremi.html">Sobre mí</a>
-
             <a href="contacto.html">Contacto</a>
-
         </nav>
-
     </header>
 
-    <section class="portada">
+    <main>
+        <section class="portada">
+            <img src="Fotos/Viajes/Sierra_Nevada_2026/lightbox/Sierra Nevada 6.jpg"
+                 alt="Carretera de acceso a las posiciones del Veleta, Sierra Nevada 2026"
+                 fetchpriority="high"
+                 width="1920" height="1080">
+        </section>
+    </main>
 
-        <img src="Fotos/Viajes/Sierra_Nevada_2026/lightbox/Sierra Nevada 6.jpg" alt="Sierra Nevada 2026">
+    <script src="menu.js"></script>
 
-    </section>
+    <footer class="footer">
+        <p>&copy; 2026 Antonio Torres · Fotografía</p>
+    </footer>
 
 </body>
-
-<footer class="footer">
-    <p>&copy; 2026 Antonio Torres · Fotografía</p>
-</footer>
-
 </html>

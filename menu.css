@@ -1,0 +1,102 @@
+/* ============================================================
+   MENÚ HAMBURGUESA (solo móvil)
+   - En escritorio: menú horizontal normal (sin cambios)
+   - En móvil: botón ☰ que despliega el menú
+   ============================================================ */
+
+/* Botón hamburguesa: oculto en escritorio */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: 2px solid white;
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+    padding: 6px 14px;
+    border-radius: 6px;
+    line-height: 1;
+    transition: all 0.2s ease;
+    margin: 10px auto 0 auto;
+}
+
+.menu-toggle:hover,
+.menu-toggle:focus-visible {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #d4b98c;
+    color: #d4b98c;
+    outline: none;
+}
+
+/* Icono del botón: ☰ por defecto, ✕ cuando está abierto */
+.menu-toggle::before {
+    content: "\2630"; /* ☰ */
+}
+
+.menu-toggle.abierto::before {
+    content: "\2715"; /* ✕ */
+}
+
+/* ============================================================
+   MÓVIL (≤ 768px): menú desplegable
+   ============================================================ */
+
+@media (max-width: 768px) {
+
+    /* Mostrar el botón */
+    .menu-toggle {
+        display: block;
+    }
+
+    /* El nav pasa a ser un panel desplegable */
+    nav {
+        display: none;
+        flex-direction: column;
+        background: #1a1a1a;
+        border-radius: 10px;
+        padding: 10px 0;
+        margin-top: 15px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+        overflow: hidden;
+    }
+
+    nav.abierto {
+        display: flex;
+        animation: desplegar 0.25s ease;
+    }
+
+    @keyframes desplegar {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    nav a {
+        display: block;
+        margin: 0;
+        padding: 14px 20px;
+        font-size: 18px;
+        text-align: center;
+        border-bottom: 1px solid #2a2a2a;
+    }
+
+    nav a:last-child {
+        border-bottom: none;
+    }
+
+    nav a:hover,
+    nav a:focus-visible {
+        background: rgba(212, 185, 140, 0.1);
+        color: #d4b98c;
+        outline: none;
+    }
+
+    /* El header deja de centrar todo en móvil */
+    header {
+        padding: 20px 10px 10px 10px;
+    }
+}
