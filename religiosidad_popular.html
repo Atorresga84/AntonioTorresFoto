@@ -22,13 +22,21 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="menu.css">
 </head>
 
 <body>
 
     <header>
         <h1>AntonioTorresFoto</h1>
-        <nav>
+
+        <button class="menu-toggle"
+                aria-label="Abrir menú"
+                aria-expanded="false"
+                aria-controls="menu-principal">
+        </button>
+
+        <nav id="menu-principal">
             <a href="index.html">Inicio</a>
             <a href="naturaleza.html">Naturaleza</a>
             <a href="religiosidad_popular.html">Religiosidad Popular</a>
@@ -38,35 +46,39 @@
         </nav>
     </header>
 
-    <h2>Religiosidad Popular</h2>
+    <main>
+        <h2>Religiosidad Popular</h2>
 
-    <div class="categoria">
-        <a href="virgen_angustias_2026.html">
-            <img src="Fotos/religiosidad popular/virgen_angustias_2026/galeria/virgen_angustias_2026 4.jpg"
-                 alt="Virgen de las Angustias 2026 en la Carrera de la Virgen"
-                 loading="lazy"
-                 width="800" height="533">
-            <div class="titulo-categoria">
-                VIRGEN DE LAS ANGUSTIAS 2026
-            </div>
-        </a>
-    </div>
+        <div class="categoria">
+            <a href="virgen_angustias_2026.html">
+                <img src="Fotos/religiosidad popular/virgen_angustias_2026/galeria/virgen_angustias_2026 4.jpg"
+                     alt="Virgen de las Angustias 2026 en la Carrera de la Virgen"
+                     loading="lazy"
+                     width="1200" height="800">
+                <div class="titulo-categoria">
+                    VIRGEN DE LAS ANGUSTIAS 2026
+                </div>
+            </a>
+        </div>
 
-    <div class="categoria">
-        <a href="virgen_martirio_2026.html">
-            <img src="Fotos/religiosidad popular/virgen_martirio_2026/galeria/virgen martirio 12.jpg"
-                 alt="Virgen del Martirio 2026"
-                 loading="lazy"
-                 width="800" height="533">
-            <div class="titulo-categoria">
-                VIRGEN DEL MARTIRIO 2026
-            </div>
-        </a>
-    </div>
+        <div class="categoria">
+            <a href="virgen_martirio_2026.html">
+                <img src="Fotos/religiosidad popular/virgen_martirio_2026/galeria/virgen martirio 12.jpg"
+                     alt="Virgen del Martirio 2026"
+                     loading="lazy"
+                     width="1200" height="800">
+                <div class="titulo-categoria">
+                    VIRGEN DEL MARTIRIO 2026
+                </div>
+            </a>
+        </div>
+    </main>
 
- <footer class="footer">
-    <p>&copy; 2026 Antonio Torres · Fotografía</p>
-</footer>
-   
+    <script src="menu.js"></script>
+
+    <footer class="footer">
+        <p>&copy; 2026 Antonio Torres · Fotografía</p>
+    </footer>
+
 </body>
 </html>

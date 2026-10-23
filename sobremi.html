@@ -22,13 +22,21 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="menu.css">
 </head>
 
 <body>
 
     <header>
         <h1>AntonioTorresFoto</h1>
-        <nav>
+
+        <button class="menu-toggle"
+                aria-label="Abrir menú"
+                aria-expanded="false"
+                aria-controls="menu-principal">
+        </button>
+
+        <nav id="menu-principal">
             <a href="index.html">Inicio</a>
             <a href="naturaleza.html">Naturaleza</a>
             <a href="religiosidad_popular.html">Religiosidad Popular</a>
@@ -62,6 +70,8 @@
             </p>
         </article>
     </main>
+
+    <script src="menu.js"></script>
 
     <footer class="footer">
         <p>&copy; 2026 Antonio Torres · Fotografía</p>

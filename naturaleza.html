@@ -22,13 +22,21 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="menu.css">
 </head>
 
 <body>
 
     <header>
         <h1>AntonioTorresFoto</h1>
-        <nav>
+
+        <button class="menu-toggle"
+                aria-label="Abrir menú"
+                aria-expanded="false"
+                aria-controls="menu-principal">
+        </button>
+
+        <nav id="menu-principal">
             <a href="index.html">Inicio</a>
             <a href="naturaleza.html">Naturaleza</a>
             <a href="religiosidad_popular.html">Religiosidad Popular</a>
@@ -38,24 +46,27 @@
         </nav>
     </header>
 
-    <h2>Naturaleza</h2>
+    <main>
+        <h2>Naturaleza</h2>
 
-    <div class="categoria">
-        <a href="aves.html">
-            <img src="Fotos/Golondrina.jpg"
-                 alt="Golondrina, fotografía de aves"
-                 loading="lazy"
-                 width="1200" height="800">
-            <div class="titulo-categoria">
-                AVES
-            </div>
-        </a>
-    </div>
+        <div class="categoria">
+            <a href="aves.html">
+                <img src="Fotos/Golondrina.jpg"
+                     alt="Golondrina, fotografía de aves"
+                     loading="lazy"
+                     width="1200" height="800">
+                <div class="titulo-categoria">
+                    AVES
+                </div>
+            </a>
+        </div>
+    </main>
+
+    <script src="menu.js"></script>
+
+    <footer class="footer">
+        <p>&copy; 2026 Antonio Torres · Fotografía</p>
+    </footer>
 
 </body>
-
-<footer class="footer">
-    <p>&copy; 2026 Antonio Torres · Fotografía</p>
-</footer>
-
 </html>
