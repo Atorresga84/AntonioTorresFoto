@@ -8,14 +8,6 @@
     <title>Naturaleza - AntonioTorresFoto</title>
     <meta name="description" content="Galería de fotografía de naturaleza: aves y otras especies. Fotografía de Antonio Torres.">
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MT3DKL07EW"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-MT3DKL07EW');
-    </script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,6 +15,7 @@
 
     <link rel="stylesheet" href="estilos.css">
     <link rel="stylesheet" href="menu.css">
+    <link rel="stylesheet" href="legal.css">
 </head>
 
 <body>
@@ -63,10 +56,29 @@
     </main>
 
     <script src="menu.js"></script>
+    <script src="cookies.js"></script>
 
     <footer class="footer">
-        <p>&copy; 2026 Antonio Torres · Fotografía</p>
-    </footer>
+    <p>&copy; 2026 Antonio Torres · Fotografía</p>
+    <p style="margin-top: 10px; font-size: 12px;">
+        <a href="aviso-legal.html" style="color: #888;">Aviso legal</a> ·
+        <a href="privacidad.html" style="color: #888;">Privacidad</a> ·
+        <a href="cookies.html" style="color: #888;">Cookies</a> ·
+        <button class="enlace-cookies" onclick="abrirConfiguracionCookies()">Configurar cookies</button>
+    </p>
+</footer>
+
+<div id="banner-cookies">
+    <div class="banner-cookies-contenido">
+        <p class="banner-cookies-texto">
+            Este sitio web utiliza cookies propias y de terceros (Google Analytics) para obtener datos estadísticos de navegación. Puedes aceptar o rechazar su uso. Más información en nuestra <a href="cookies.html">Política de Cookies</a>.
+        </p>
+        <div class="banner-cookies-botones">
+            <button id="btn-rechazar-cookies">Rechazar</button>
+            <button id="btn-aceptar-cookies">Aceptar</button>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>

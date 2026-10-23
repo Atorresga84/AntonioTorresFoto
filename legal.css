@@ -1,0 +1,172 @@
+/* ============================================================
+   BANNER DE COOKIES
+   ============================================================ */
+
+#banner-cookies {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #1a1a1a;
+    border-top: 1px solid #333;
+    padding: 20px;
+    z-index: 100000;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.banner-cookies-contenido {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 15px;
+    justify-content: space-between;
+}
+
+.banner-cookies-texto {
+    flex: 1 1 400px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #ddd;
+    margin: 0;
+}
+
+.banner-cookies-texto a {
+    color: #d4b98c;
+    text-decoration: underline;
+}
+
+.banner-cookies-botones {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.banner-cookies-botones button {
+    font-family: "Libre Baskerville", serif;
+    font-size: 14px;
+    padding: 10px 22px;
+    border-radius: 6px;
+    cursor: pointer;
+    border: 1px solid #555;
+    transition: all 0.2s ease;
+}
+
+#btn-aceptar-cookies {
+    background: #d4b98c;
+    color: #111;
+    border-color: #d4b98c;
+    font-weight: bold;
+}
+
+#btn-aceptar-cookies:hover {
+    background: #e6cba5;
+}
+
+#btn-rechazar-cookies {
+    background: transparent;
+    color: #ddd;
+}
+
+#btn-rechazar-cookies:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Enlace "Cookies" en el footer */
+.enlace-cookies {
+    background: none;
+    border: none;
+    color: #888;
+    font-family: "Libre Baskerville", serif;
+    font-size: 14px;
+    cursor: pointer;
+    text-decoration: underline;
+    padding: 0;
+    letter-spacing: 1px;
+}
+
+.enlace-cookies:hover {
+    color: #d4b98c;
+}
+
+/* ============================================================
+   PÁGINAS LEGALES (Aviso legal, Privacidad, Cookies)
+   ============================================================ */
+
+.legal {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 0 20px;
+    font-size: 16px;
+    line-height: 1.8;
+    color: #ddd;
+}
+
+.legal h3 {
+    font-family: "Cinzel", serif;
+    font-size: 22px;
+    color: #d4b98c;
+    margin-top: 40px;
+    margin-bottom: 15px;
+}
+
+.legal p {
+    margin-bottom: 18px;
+    text-align: left;
+}
+
+.legal ul {
+    margin-bottom: 18px;
+    padding-left: 25px;
+}
+
+.legal li {
+    margin-bottom: 10px;
+}
+
+.legal a {
+    color: #d4b98c;
+    text-decoration: underline;
+}
+
+.legal table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 14px;
+}
+
+.legal th,
+.legal td {
+    border: 1px solid #333;
+    padding: 10px;
+    text-align: left;
+}
+
+.legal th {
+    background: #1a1a1a;
+    color: #d4b98c;
+    font-family: "Cinzel", serif;
+}
+
+@media (max-width: 768px) {
+    .banner-cookies-contenido {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .banner-cookies-botones {
+        justify-content: center;
+    }
+
+    .banner-cookies-botones button {
+        flex: 1;
+    }
+
+    .legal {
+        font-size: 15px;
+        margin: 30px auto;
+    }
+}

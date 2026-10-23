@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Política de Cookies - AntonioTorresFoto</title>
+    <meta name="description" content="Política de cookies de AntonioTorresFoto.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="menu.css">
+    <link rel="stylesheet" href="legal.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>AntonioTorresFoto</h1>
+        <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu-principal"></button>
+        <nav id="menu-principal">
+            <a href="index.html">Inicio</a>
+            <a href="naturaleza.html">Naturaleza</a>
+            <a href="religiosidad_popular.html">Religiosidad Popular</a>
+            <a href="viajes.html">Viajes</a>
+            <a href="sobremi.html">Sobre mí</a>
+            <a href="contacto.html">Contacto</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Política de Cookies</h2>
+
+        <div class="legal">
+
+            <h3>1. ¿Qué son las cookies?</h3>
+            <p>
+                Las cookies son pequeños archivos que se almacenan en tu navegador cuando visitas un sitio web. Se utilizan para recordar tus preferencias o recopilar información estadística sobre la navegación.
+            </p>
+
+            <h3>2. Cookies que utiliza este sitio</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Cookie</th>
+                        <th>Titular</th>
+                        <th>Finalidad</th>
+                        <th>Duración</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>_ga</td>
+                        <td>Google Analytics</td>
+                        <td>Distinguir usuarios y obtener estadísticas de visitas</td>
+                        <td>2 años</td>
+                    </tr>
+                    <tr>
+                        <td>_ga_*</td>
+                        <td>Google Analytics</td>
+                        <td>Mantener el estado de la sesión</td>
+                        <td>2 años</td>
+                    </tr>
+                    <tr>
+                        <td>consentimiento_cookies</td>
+                        <td>Este sitio web</td>
+                        <td>Recordar si has aceptado o rechazado las cookies</td>
+                        <td>Permanente (localStorage)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>3. Cookies de terceros</h3>
+            <p>
+                Google Analytics es un servicio de analítica web prestado por Google Ireland Limited. Puedes consultar su política de privacidad en <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">policies.google.com/privacy</a>.
+            </p>
+
+            <h3>4. Cómo gestionar las cookies</h3>
+            <p>
+                Al entrar por primera vez en el sitio, puedes aceptar o rechazar las cookies analíticas. Si las rechazas, Google Analytics no se cargará.
+            </p>
+            <p>
+                Puedes cambiar tu decisión en cualquier momento pulsando el botón "Configurar cookies" que encontrarás en el pie de página.
+            </p>
+            <p>
+                También puedes configurar tu navegador para bloquear o eliminar cookies:
+            </p>
+            <ul>
+                <li><a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener noreferrer">Google Chrome</a></li>
+                <li><a href="https://support.mozilla.org/es/kb/habilitar-y-deshabilitar-cookies-sitios-web-rastrear-preferencias" target="_blank" rel="noopener noreferrer">Mozilla Firefox</a></li>
+                <li><a href="https://support.apple.com/es-es/guide/safari/sfri11471/mac" target="_blank" rel="noopener noreferrer">Safari</a></li>
+                <li><a href="https://support.microsoft.com/es-es/windows/eliminar-y-administrar-cookies-168dab11-0753-043d-7c16-ede5947fc64d" target="_blank" rel="noopener noreferrer">Microsoft Edge</a></li>
+            </ul>
+
+            <h3>5. Actualizaciones</h3>
+            <p>
+                Esta política puede actualizarse si cambian las cookies utilizadas o la normativa aplicable.
+            </p>
+
+            <p><em>Última actualización: octubre de 2026.</em></p>
+
+        </div>
+    </main>
+
+    <script src="menu.js"></script>
+    <script src="cookies.js"></script>
+
+    <footer class="footer">
+        <p>&copy; 2026 Antonio Torres · Fotografía</p>
+        <p style="margin-top: 10px; font-size: 12px;">
+            <a href="aviso-legal.html" style="color: #888;">Aviso legal</a> ·
+            <a href="privacidad.html" style="color: #888;">Privacidad</a> ·
+            <a href="cookies.html" style="color: #888;">Cookies</a> ·
+            <button class="enlace-cookies" onclick="abrirConfiguracionCookies()">Configurar cookies</button>
+        </p>
+    </footer>
+
+    <div id="banner-cookies">
+        <div class="banner-cookies-contenido">
+            <p class="banner-cookies-texto">
+                Este sitio web utiliza cookies propias y de terceros (Google Analytics) para obtener datos estadísticos de navegación. Puedes aceptar o rechazar su uso. Más información en nuestra <a href="cookies.html">Política de Cookies</a>.
+            </p>
+            <div class="banner-cookies-botones">
+                <button id="btn-rechazar-cookies">Rechazar</button>
+                <button id="btn-aceptar-cookies">Aceptar</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
