@@ -156,24 +156,23 @@ nav a:hover {
 }
 
 /* ============================================================
-   GALERÍAS (GRID 3 COLUMNAS)
+   GALERÍAS — MOSAICO CON PROPORCIÓN ORIGINAL
    ============================================================ */
 
 .galeria {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
+    column-count: 3;
+    column-gap: 12px;
     padding: 12px 40px;
 }
 
 .galeria img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    aspect-ratio: 3 / 2;
+    height: auto;
+    margin-bottom: 12px;
     display: block;
     transition: opacity 0.3s ease;
     cursor: pointer;
+    break-inside: avoid;
 }
 
 .galeria img:hover {
@@ -388,13 +387,13 @@ nav a:hover {
     }
 
     .galeria {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 6px;
+        column-count: 2;
+        column-gap: 6px;
         padding: 6px;
     }
 
     .galeria img {
-        aspect-ratio: 1 / 1;      /* ← CUADRADAS EN MÓVIL */
+        margin-bottom: 6px;
     }
 
     .foto-completa img {
