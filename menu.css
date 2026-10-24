@@ -38,13 +38,28 @@
 
     .menu-toggle {
         display: block;
-        position: static;      /* ← ya no absolute, fluye en el layout */
-        align-self: flex-end;  /* ← alineado a la derecha */
-        margin-top: 10px;
+        position: static;
+        align-self: center;    /* ← centrado horizontalmente */
+        margin: 15px auto 5px auto;  /* ← aire arriba y abajo */
     }
 
     header {
         position: relative;
+        align-items: center;   /* ← centra también el título y subtítulo */
+        text-align: center;
+    }
+
+    .header-titulo {
+        align-items: center;
+        text-align: center;
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+    .subtitulo {
+        text-align: center;
     }
 
     nav {
@@ -56,7 +71,7 @@
         margin-top: 15px;
         box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
         width: 100%;
-        text-align: left;
+        text-align: center;    /* ← enlaces del menú centrados */
     }
 
     nav.abierto {
@@ -80,7 +95,7 @@
         margin: 0;
         padding: 14px 20px;
         font-size: 12px;
-        text-align: left;
+        text-align: center;    /* ← cada enlace centrado */
         letter-spacing: 2px;
         color: #333;
         border-bottom: 1px solid #f0f0f0;
