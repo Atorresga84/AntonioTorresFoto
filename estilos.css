@@ -7,67 +7,89 @@
 }
 
 body {
-    background-color: #111;
-    color: white;
-    font-family: "Libre Baskerville", serif;
+    background-color: #fafafa;
+    color: #111;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     margin: 0;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
 }
 
 h1,
 h2,
 .titulo-categoria {
-    font-family: "Cinzel", serif;
+    font-family: "Inter", sans-serif;
+    font-weight: 300;
 }
 
 h1 {
-    text-align: center;
-    font-size: 48px;
-    font-weight: 500;
-    letter-spacing: 3px;
-    margin-bottom: 5px;
+    text-align: left;
+    font-size: 22px;
+    font-weight: 400;
+    letter-spacing: 4px;
+    margin: 0;
+    text-transform: uppercase;
 }
 
 h2 {
-    text-align: center;
-    font-size: 42px;
-    font-weight: 500;
-    letter-spacing: 2px;
-    margin-top: 40px;
+    text-align: left;
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: 3px;
+    margin: 60px 0 30px 0;
+    text-transform: uppercase;
+    color: #111;
+    padding-left: 40px;
 }
 
 .subtitulo {
-    font-size: 20px;
-    font-weight: 300;
-    color: #cccccc;
-    margin-bottom: 25px;
-    text-align: center;
+    font-size: 12px;
+    font-weight: 400;
+    color: #888;
+    margin: 6px 0 0 0;
+    text-align: left;
+    letter-spacing: 1px;
 }
 
 /* ============================================================
-   HEADER Y NAVEGACIÓN
+   HEADER (alineado izquierda)
    ============================================================ */
 
 header {
-    text-align: center;
-    padding: 40px 20px;
+    text-align: left;
+    padding: 30px 40px 20px 40px;
+    border-bottom: 1px solid #e5e5e5;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+.header-titulo {
+    display: flex;
+    flex-direction: column;
 }
 
 nav {
-    text-align: center;
-    margin: 10px 0;
+    text-align: right;
+    margin: 0;
 }
 
 nav a {
-    color: white;
+    color: #555;
     text-decoration: none;
-    margin: 0 15px;
-    font-size: 22px;
-    letter-spacing: 1px;
+    margin: 0 0 0 22px;
+    font-size: 12px;
+    letter-spacing: 2px;
     display: inline-block;
+    text-transform: uppercase;
+    transition: color 0.2s ease;
 }
 
 nav a:hover {
-    color: #cccccc;
+    color: #111;
 }
 
 /* ============================================================
@@ -86,14 +108,13 @@ nav a:hover {
 }
 
 /* ============================================================
-   CATEGORÍAS (PÁGINAS DE CATEGORÍA)
+   CATEGORÍAS — TARJETAS CUADRADAS
    ============================================================ */
 
 .categoria {
     width: 350px;
     margin: 20px;
     display: inline-block;
-    position: relative;
     vertical-align: top;
 }
 
@@ -104,52 +125,52 @@ nav a:hover {
 
 .categoria img {
     width: 100%;
-    height: auto;
-    aspect-ratio: 3 / 2;
+    aspect-ratio: 1 / 1;      /* ← CUADRADA */
     object-fit: cover;
-    border-radius: 12px;
     display: block;
 }
 
 .titulo-categoria {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
-    font-size: 20px;
-    font-weight: 600;
+    padding: 14px 0 0 0;
+    color: #555;
+    font-size: 11px;
     letter-spacing: 3px;
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 10px 20px;
-    border-radius: 8px;
-    text-align: center;
-    width: 90%;
+    text-align: left;
+    text-transform: uppercase;
+    background: none;
+    position: static;
+    transform: none;
+    border-radius: 0;
+    transition: color 0.2s ease;
+}
+
+.categoria a:hover .titulo-categoria {
+    color: #111;
 }
 
 /* ============================================================
-   GALERÍAS (MOSAICO CON COLUMNAS)
+   GALERÍAS (GRID 3 COLUMNAS)
    ============================================================ */
 
 .galeria {
-    column-count: 3;
-    column-gap: 20px;
-    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    padding: 12px 40px;
 }
 
 .galeria img {
     width: 100%;
-    height: auto;
-    margin-bottom: 20px;
-    border-radius: 12px;
+    height: 100%;
+    object-fit: cover;
+    aspect-ratio: 3 / 2;
     display: block;
-    transition: transform 0.3s ease;
+    transition: opacity 0.3s ease;
     cursor: pointer;
-    break-inside: avoid;
 }
 
 .galeria img:hover {
-    transform: scale(1.02);
+    opacity: 0.85;
 }
 
 /* ============================================================
@@ -166,7 +187,6 @@ nav a:hover {
     max-height: 60vh;
     width: auto;
     height: auto;
-    border-radius: 12px;
 }
 
 .visor-foto {
@@ -182,84 +202,14 @@ nav a:hover {
     max-height: 75vh;
     width: auto;
     height: auto;
-    border-radius: 12px;
 }
 
 .descripcion-foto {
     max-width: 900px;
     margin-top: 15px;
     text-align: center;
-    font-size: 10px;
-    color: #cccccc;
-}
-
-/* ============================================================
-   LIGHTBOX
-   ============================================================ */
-
-.lightbox {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.95);
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    z-index: 9999;
-    padding: 20px;
-}
-
-.imagen-lightbox {
-    max-width: 90%;
-    max-height: 80%;
-    object-fit: contain;
-    border-radius: 10px;
-}
-
-.texto-lightbox {
-    color: white;
-    font-size: 16px;
-    text-align: center;
-    margin-top: 20px;
-    max-width: 900px;
-    padding: 0 20px;
-    white-space: pre-line;
-}
-
-.cerrar {
-    position: absolute;
-    top: 20px;
-    right: 40px;
-    color: white;
-    font-size: 50px;
-    cursor: pointer;
-    line-height: 1;
-    z-index: 10000;
-}
-
-/* Flechas del lightbox */
-.anterior,
-.siguiente {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    color: white;
-    font-size: 60px;
-    font-weight: bold;
-    cursor: pointer;
-    user-select: none;
-    z-index: 10000;
-}
-
-.anterior {
-    left: 30px;
-}
-
-.siguiente {
-    right: 30px;
+    font-size: 11px;
+    color: #888;
 }
 
 /* ============================================================
@@ -267,58 +217,59 @@ nav a:hover {
    ============================================================ */
 
 .sobremi {
-    max-width: 800px;
-    margin: 50px auto;
-    padding: 0 20px;
-    font-size: 22px;
-    line-height: 1.8;
+    max-width: 640px;
+    margin: 40px auto 60px auto;
+    padding: 0 40px;
+    font-size: 16px;
+    line-height: 1.9;
+    color: #333;
 }
 
 .sobremi p {
-    text-align: center;
-    margin-bottom: 24px;
+    text-align: left;
+    margin-bottom: 22px;
 }
 
 .sobremi a {
-    color: #d4b98c;
+    color: #111;
     text-decoration: none;
-    border-bottom: 1px solid rgba(212, 185, 140, 0.5);
-    transition: color 0.2s ease;
+    border-bottom: 1px solid #ccc;
+    transition: border-color 0.2s ease;
 }
 
 .sobremi a:hover {
-    color: #ffffff;
+    border-bottom-color: #111;
 }
 
 .foto-autor {
     display: block;
-    max-width: 300px;
+    max-width: 180px;
     width: 100%;
-    margin: 0 auto 40px auto;
-    border-radius: 50%;
+    margin: 0 auto 50px auto;
     aspect-ratio: 1 / 1;
     object-fit: cover;
 }
 
 .firma {
-    font-family: "Cinzel", serif;
     font-style: italic;
-    font-size: 20px;
-    color: #aaaaaa;
+    font-size: 13px;
+    color: #888;
     text-align: right;
     margin-top: 40px;
+    letter-spacing: 1px;
 }
 
 .redes {
     text-align: center;
-    font-size: 18px;
+    font-size: 13px;
     margin-top: 30px;
+    color: #888;
 }
 
 .divisor {
     border: none;
-    border-top: 1px solid #333;
-    width: 100px;
+    border-top: 1px solid #e5e5e5;
+    width: 40px;
     margin: 30px auto 50px auto;
 }
 
@@ -327,25 +278,28 @@ nav a:hover {
    ============================================================ */
 
 .contacto {
-    max-width: 900px;
-    margin: 50px auto;
-    padding: 0 20px;
+    max-width: 640px;
+    margin: 40px auto 60px auto;
+    padding: 0 40px;
 }
 
 .contacto p {
-    text-align: center;
-    font-size: 24px;
-    line-height: 1.8;
-    margin-bottom: 35px;
+    text-align: left;
+    font-size: 15px;
+    line-height: 1.9;
+    margin-bottom: 26px;
+    color: #333;
 }
 
 .contacto a {
-    color: white;
+    color: #111;
     text-decoration: none;
+    border-bottom: 1px solid #ccc;
+    transition: border-color 0.2s ease;
 }
 
 .contacto a:hover {
-    color: #cccccc;
+    border-bottom-color: #111;
 }
 
 /* ============================================================
@@ -354,16 +308,25 @@ nav a:hover {
 
 .footer {
     text-align: center;
-    padding: 40px 20px 30px 20px;
-    margin-top: 60px;
-    border-top: 1px solid #222;
-    color: #888;
-    font-size: 14px;
+    padding: 40px 40px 30px 40px;
+    margin-top: 80px;
+    border-top: 1px solid #e5e5e5;
+    color: #999;
+    font-size: 11px;
     letter-spacing: 1px;
 }
 
 .footer p {
-    margin: 0;
+    margin: 4px 0;
+}
+
+.footer a {
+    color: #999;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    color: #111;
 }
 
 /* ============================================================
@@ -373,35 +336,31 @@ nav a:hover {
 @media (max-width: 768px) {
 
     header {
-        padding: 20px 10px;
+        padding: 20px 20px 15px 20px;
+        flex-direction: column;
+        align-items: flex-start;
     }
 
     h1 {
-        font-size: 36px;
-        letter-spacing: 1px;
-        text-align: center;
+        font-size: 16px;
+        letter-spacing: 3px;
     }
 
     h2 {
-        font-size: 30px;
+        font-size: 14px;
+        letter-spacing: 2px;
+        margin: 40px 0 20px 0;
+        padding-left: 20px;
     }
 
     .subtitulo {
-        font-size: 16px;
-        text-align: center;
-        line-height: 1.4;
-        max-width: 90%;
-        margin: 0 auto 20px auto;
-    }
-
-    nav {
-        text-align: center;
+        font-size: 11px;
     }
 
     nav a {
-        display: inline-block;
-        font-size: 16px;
-        margin: 5px 8px;
+        font-size: 10px;
+        margin: 5px 10px 0 0;
+        letter-spacing: 1px;
     }
 
     .portada img {
@@ -409,85 +368,59 @@ nav a:hover {
     }
 
     .categoria {
-        width: 90%;
-        margin: 15px auto;
+        width: calc(100% - 40px);
+        max-width: 400px;
+        margin: 15px 20px;
         display: block;
     }
 
     .titulo-categoria {
-        font-size: 18px;
+        font-size: 10px;
         letter-spacing: 2px;
-        padding: 8px 14px;
+        padding: 10px 0 0 0;
     }
 
     .galeria {
-        column-count: 1;
-        column-gap: 10px;
-        padding: 10px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 6px;
+        padding: 6px;
+    }
+
+    .galeria img {
+        aspect-ratio: 1 / 1;      /* ← CUADRADAS EN MÓVIL */
     }
 
     .foto-completa img {
         max-width: 95%;
     }
 
-    .lightbox {
-        padding: 10px;
-    }
-
-    .imagen-lightbox {
-        max-width: 95%;
-        max-height: 75%;
-    }
-
-    .texto-lightbox {
-        font-size: 14px;
-        margin-top: 12px;
-    }
-
-    .cerrar {
-        top: 10px;
-        right: 20px;
-        font-size: 40px;
-    }
-
-    .anterior,
-    .siguiente {
-        font-size: 40px;
-    }
-
-    .anterior {
-        left: 10px;
-    }
-
-    .siguiente {
-        right: 10px;
-    }
-
     .sobremi {
-        font-size: 18px;
-        line-height: 1.7;
-        margin: 30px auto;
+        font-size: 14px;
+        line-height: 1.8;
+        margin: 20px auto 40px auto;
+        padding: 0 20px;
     }
 
     .foto-autor {
-        max-width: 200px;
+        max-width: 140px;
         margin-bottom: 30px;
     }
 
     .firma {
-        font-size: 18px;
+        font-size: 12px;
     }
 
-    .divisor {
-        margin: 20px auto 30px auto;
+    .contacto {
+        padding: 0 20px;
     }
 
     .contacto p {
-        font-size: 18px;
+        font-size: 14px;
     }
 
     .footer {
-        font-size: 12px;
-        margin-top: 40px;
+        font-size: 10px;
+        margin-top: 50px;
+        padding: 30px 20px 20px 20px;
     }
 }

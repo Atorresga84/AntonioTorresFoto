@@ -1,5 +1,5 @@
 /* ============================================================
-   BANNER DE COOKIES
+   BANNER DE COOKIES — FONDO CLARO
    ============================================================ */
 
 #banner-cookies {
@@ -8,11 +8,11 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background: #1a1a1a;
-    border-top: 1px solid #333;
-    padding: 20px;
+    background: #fff;
+    border-top: 1px solid #e5e5e5;
+    padding: 18px 40px;
     z-index: 100000;
-    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.05);
 }
 
 .banner-cookies-contenido {
@@ -27,14 +27,14 @@
 
 .banner-cookies-texto {
     flex: 1 1 400px;
-    font-size: 14px;
+    font-size: 13px;
     line-height: 1.5;
-    color: #ddd;
+    color: #555;
     margin: 0;
 }
 
 .banner-cookies-texto a {
-    color: #d4b98c;
+    color: #111;
     text-decoration: underline;
 }
 
@@ -45,42 +45,41 @@
 }
 
 .banner-cookies-botones button {
-    font-family: "Libre Baskerville", serif;
-    font-size: 14px;
+    font-family: "Inter", sans-serif;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
     padding: 10px 22px;
-    border-radius: 6px;
     cursor: pointer;
-    border: 1px solid #555;
+    border: 1px solid #111;
     transition: all 0.2s ease;
+    border-radius: 0;
 }
 
 #btn-aceptar-cookies {
-    background: #d4b98c;
-    color: #111;
-    border-color: #d4b98c;
-    font-weight: bold;
+    background: #111;
+    color: #fff;
 }
 
 #btn-aceptar-cookies:hover {
-    background: #e6cba5;
+    background: #333;
 }
 
 #btn-rechazar-cookies {
     background: transparent;
-    color: #ddd;
+    color: #111;
 }
 
 #btn-rechazar-cookies:hover {
-    background: rgba(255, 255, 255, 0.1);
+    background: #f0f0f0;
 }
 
-/* Enlace "Cookies" en el footer */
 .enlace-cookies {
     background: none;
     border: none;
-    color: #888;
-    font-family: "Libre Baskerville", serif;
-    font-size: 14px;
+    color: #999;
+    font-family: "Inter", sans-serif;
+    font-size: 11px;
     cursor: pointer;
     text-decoration: underline;
     padding: 0;
@@ -88,46 +87,48 @@
 }
 
 .enlace-cookies:hover {
-    color: #d4b98c;
+    color: #111;
 }
 
 /* ============================================================
-   PÁGINAS LEGALES (Aviso legal, Privacidad, Cookies)
+   PÁGINAS LEGALES
    ============================================================ */
 
 .legal {
-    max-width: 800px;
-    margin: 50px auto;
-    padding: 0 20px;
-    font-size: 16px;
+    max-width: 700px;
+    margin: 40px auto 60px auto;
+    padding: 0 40px;
+    font-size: 15px;
     line-height: 1.8;
-    color: #ddd;
+    color: #333;
 }
 
 .legal h3 {
-    font-family: "Cinzel", serif;
-    font-size: 22px;
-    color: #d4b98c;
+    font-size: 15px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #111;
     margin-top: 40px;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
+    font-weight: 500;
 }
 
 .legal p {
-    margin-bottom: 18px;
+    margin-bottom: 16px;
     text-align: left;
 }
 
 .legal ul {
-    margin-bottom: 18px;
-    padding-left: 25px;
+    margin-bottom: 16px;
+    padding-left: 22px;
 }
 
 .legal li {
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 
 .legal a {
-    color: #d4b98c;
+    color: #111;
     text-decoration: underline;
 }
 
@@ -135,23 +136,75 @@
     width: 100%;
     border-collapse: collapse;
     margin: 20px 0;
-    font-size: 14px;
+    font-size: 13px;
 }
 
 .legal th,
 .legal td {
-    border: 1px solid #333;
+    border: 1px solid #e5e5e5;
     padding: 10px;
     text-align: left;
 }
 
 .legal th {
-    background: #1a1a1a;
-    color: #d4b98c;
-    font-family: "Cinzel", serif;
+    background: #f5f5f5;
+    color: #111;
+    font-weight: 500;
+}
+
+/* ============================================================
+   PÁGINA 404
+   ============================================================ */
+
+.error-404 {
+    text-align: center;
+    max-width: 700px;
+    margin: 80px auto;
+    padding: 0 20px;
+}
+
+.error-codigo {
+    font-size: 120px;
+    font-weight: 200;
+    color: #ddd;
+    margin: 0;
+    line-height: 1;
+    letter-spacing: 8px;
+}
+
+.error-mensaje {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #666;
+    margin: 30px 0 40px 0;
+}
+
+.error-botones {
+    margin-top: 30px;
+}
+
+.boton-volver {
+    display: inline-block;
+    background: #111;
+    color: #fff;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 14px 30px;
+    text-decoration: none;
+    transition: background 0.2s ease;
+    border-radius: 0;
+}
+
+.boton-volver:hover {
+    background: #333;
 }
 
 @media (max-width: 768px) {
+    #banner-cookies {
+        padding: 15px 20px;
+    }
+
     .banner-cookies-contenido {
         flex-direction: column;
         align-items: stretch;
@@ -166,7 +219,17 @@
     }
 
     .legal {
-        font-size: 15px;
-        margin: 30px auto;
+        font-size: 14px;
+        margin: 20px auto 40px auto;
+        padding: 0 20px;
+    }
+
+    .error-codigo {
+        font-size: 80px;
+        letter-spacing: 4px;
+    }
+
+    .error-404 {
+        margin: 50px auto;
     }
 }

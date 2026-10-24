@@ -1,62 +1,62 @@
 /* ============================================================
-   MENÚ HAMBURGUESA (solo móvil)
-   - En escritorio: menú horizontal normal (sin cambios)
-   - En móvil: botón ☰ que despliega el menú
+   MENÚ HAMBURGUESA — ADAPTADO A FONDO CLARO
    ============================================================ */
 
-/* Botón hamburguesa: oculto en escritorio */
 .menu-toggle {
     display: none;
     background: none;
-    border: 2px solid white;
-    color: white;
-    font-size: 28px;
+    border: 1px solid #111;
+    color: #111;
+    font-size: 20px;
     cursor: pointer;
-    padding: 6px 14px;
-    border-radius: 6px;
+    padding: 6px 12px;
     line-height: 1;
     transition: all 0.2s ease;
-    margin: 10px auto 0 auto;
+    border-radius: 0;
 }
 
 .menu-toggle:hover,
 .menu-toggle:focus-visible {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: #d4b98c;
-    color: #d4b98c;
+    background: #111;
+    color: #fff;
     outline: none;
 }
 
-/* Icono del botón: ☰ por defecto, ✕ cuando está abierto */
 .menu-toggle::before {
-    content: "\2630"; /* ☰ */
+    content: "\2630";
 }
 
 .menu-toggle.abierto::before {
-    content: "\2715"; /* ✕ */
+    content: "\2715";
 }
 
 /* ============================================================
-   MÓVIL (≤ 768px): menú desplegable
+   MÓVIL
    ============================================================ */
 
 @media (max-width: 768px) {
 
-    /* Mostrar el botón */
     .menu-toggle {
         display: block;
+        position: absolute;
+        top: 20px;
+        right: 20px;
     }
 
-    /* El nav pasa a ser un panel desplegable */
+    header {
+        position: relative;
+    }
+
     nav {
         display: none;
         flex-direction: column;
-        background: #1a1a1a;
-        border-radius: 10px;
-        padding: 10px 0;
+        background: #fff;
+        border: 1px solid #e5e5e5;
+        padding: 8px 0;
         margin-top: 15px;
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
-        overflow: hidden;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+        width: 100%;
+        text-align: left;
     }
 
     nav.abierto {
@@ -67,7 +67,7 @@
     @keyframes desplegar {
         from {
             opacity: 0;
-            transform: translateY(-10px);
+            transform: translateY(-8px);
         }
         to {
             opacity: 1;
@@ -79,9 +79,11 @@
         display: block;
         margin: 0;
         padding: 14px 20px;
-        font-size: 18px;
-        text-align: center;
-        border-bottom: 1px solid #2a2a2a;
+        font-size: 12px;
+        text-align: left;
+        letter-spacing: 2px;
+        color: #333;
+        border-bottom: 1px solid #f0f0f0;
     }
 
     nav a:last-child {
@@ -90,13 +92,8 @@
 
     nav a:hover,
     nav a:focus-visible {
-        background: rgba(212, 185, 140, 0.1);
-        color: #d4b98c;
+        background: #fafafa;
+        color: #111;
         outline: none;
-    }
-
-    /* El header deja de centrar todo en móvil */
-    header {
-        padding: 20px 10px 10px 10px;
     }
 }
