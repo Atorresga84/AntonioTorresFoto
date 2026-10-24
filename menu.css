@@ -38,9 +38,9 @@
 
     .menu-toggle {
         display: block;
-        position: absolute;
-        top: 20px;
-        right: 20px;
+        position: static;      /* ← ya no absolute, fluye en el layout */
+        align-self: flex-end;  /* ← alineado a la derecha */
+        margin-top: 10px;
     }
 
     header {
